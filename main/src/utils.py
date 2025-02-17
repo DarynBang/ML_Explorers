@@ -6,7 +6,44 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 
 
-# Generate synthetic data with 6 classes
+def plot_images_with_labels(data, labels, label_map, num_images=10):
+    # plt.figure(figsize=(10, 10))
+    for i in range(num_images):
+        plt.subplot(4, 4, i+1)
+        image = data[i]  # Get the i-th image
+        label = labels[i]  # Get the i-th label
+        plt.imshow(image[:, :, 0], cmap='gray')  # Plot only one channel (28x28x28, take first slice)
+        plt.title(f"{list(label_map.keys())[list(label_map.values()).index(label)]}")
+        plt.axis('off')
+        plt.subplots_adjust(wspace=2, hspace=0)  # Add more horizontal and vertical space
+    plt.show()
+
+
+def plot_slices(num_rows, num_columns, width, height, data):
+    """Plot a montage of 20 CT slices"""
+    data = np.rot90(np.array(data))
+    data = np.transpose(data)
+    data = np.reshape(data, (num_rows, num_columns, width, height))
+    rows_data, columns_data = data.shape[0], data.shape[1]
+    heights = [slc[0].shape[0] for slc in data]
+    widths = [slc.shape[1] for slc in data[0]]
+    fig_width = 12.0
+    fig_height = fig_width * sum(heights) / sum(widths)
+    f, axarr = plt.subplots(
+        rows_data,
+        columns_data,
+        figsize=(fig_width, fig_height),
+        gridspec_kw={"height_ratios": heights},
+    )
+    for i in range(rows_data):
+        for j in range(columns_data):
+            axarr[i, j].imshow(data[i][j], cmap="gray")
+            axarr[i, j].axis("off")
+    plt.subplots_adjust(wspace=0, hspace=0, left=0, right=1, bottom=0, top=1)
+    plt.show()
+
+
+# Generate synthetic data with 6 classes with PCA
 def generate_synthetic_PCA_data(data, labels, name_embedding = 'flatten'):
   X, y = data,labels
   # Apply PCA (reduce to 2D)
@@ -32,7 +69,8 @@ def generate_synthetic_PCA_data(data, labels, name_embedding = 'flatten'):
   plt.legend()
   plt.show()
 
-# Generate synthetic data with 6 classes
+
+# Generate synthetic data with 6 classes with TSNE
 def generate_synthetic_TSNE_data(data, labels, name_embedding = 'flatten'):
   tsne = TSNE(n_components=2, perplexity=30, random_state=42)
   X_tsne,y = tsne.fit_transform(data),labels
@@ -55,6 +93,7 @@ def generate_synthetic_TSNE_data(data, labels, name_embedding = 'flatten'):
   plt.title(f"TSNE Visualization of {name_embedding} embedding data")
   plt.legend()
   plt.show()
+
 
 def get_data_from_file(name_embedding = '2D_CNN_init'):
   train_data = torch.load(glob(f'Embedding/*{name_embedding}*train*data*')[0],weights_only=False)
