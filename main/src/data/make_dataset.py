@@ -1,4 +1,5 @@
 import torch
+from torch.utils.data import Dataset
 
 # Custom Dataset class for 3D inputs
 class Custom3DDataset(Dataset):
