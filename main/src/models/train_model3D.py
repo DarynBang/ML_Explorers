@@ -1,7 +1,8 @@
 import torch
 import torch.nn as nn
-from CNN3D import CNN3D_MLP
 
+from CNN3D import CNN3D_MLP
+from data.make_dataset import Custom3DDataset
 from torch.data.utils import DataLoader
 import matplotlib.pyplot as plt
 
