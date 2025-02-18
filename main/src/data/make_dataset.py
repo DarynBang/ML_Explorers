@@ -1,3 +1,5 @@
+import torch
+
 # Custom Dataset class for 3D inputs
 class Custom3DDataset(Dataset):
     def __init__(self, data, labels):
