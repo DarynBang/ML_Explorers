@@ -1,5 +1,7 @@
 import glob
-from utils import 
+import numpy as np
+import torch
+from utils import plot_images_with_labels, plot_slices
 
 path_3ds = glob("MNIST/*3d*")
 
