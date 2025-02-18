@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class CNN3D_MLP(nn.Module):
     def __init__(self, num_classes=6):
         super(CNN3D_MLP, self).__init__()
