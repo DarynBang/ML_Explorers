@@ -29,3 +29,8 @@ def naive_bayes_algorithm(embedding_name= 'flatten'):
   print(f"Precision: {precision:.4f}")
   print(f"Recall: {recall:.4f}")
   print(f"F1 Score: {f1:.4f}")
+
+if __name__ == '__main__:
+  models_name = ['flatten', '2D_CNN_init', '2D_CNN_pretrained', '3D_CNN_init', '3D_CNN_pretrained']
+  for model in models_name:
+    naive_bayes_algorithm(embedding_name = model)
