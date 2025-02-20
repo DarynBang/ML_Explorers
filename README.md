@@ -18,8 +18,8 @@
 ## Authors
 
 <ol>
-    <li><a href="">Tieu Tri Bang - 2252079 </a></li>
-    <li><a href="">Nguyen Van Hieu - 2153345 </a></li>
+    <li><a href="">Tieu Tri Bang\t- 2252079 </a></li>
+    <li><a href="">Nguyen Van Hieu\t- 2153345 </a></li>
     <li><a href="">Pham Huy Thien Phuc - 2053346</a></li>
 </ol>
 
