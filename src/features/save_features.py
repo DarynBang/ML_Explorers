@@ -1,9 +1,8 @@
-
 import numpy as np
 import torch
-from data.make_dataset import Custom2DDataset, Custom3DDataset
-from models.CNN2D import CNN2D_MLP
-from models.CNN3D import CNN3D_MLP
+from src.data.make_dataset import Custom2DDataset, Custom3DDataset
+from src.models.CNN2D import CNN2D_MLP
+from src.models.CNN3D import CNN3D_MLP
 from torch.nn.utils import DataLoader
 
 
