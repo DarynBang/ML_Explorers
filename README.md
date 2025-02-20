@@ -1,6 +1,6 @@
 <!-- PAPER TITLE -->
 
-# [VISAPP-2025] Distortion-Aware Adversarial Attacks on Bounding Boxes of Object Detectors
+# Machine Learning Assignment 1
 
 <!-- TABLE OF CONTENTS -->
 
@@ -20,9 +20,9 @@
 ## Authors
 
 <ol>
-    <li><a href="">Anonymous Author 1</a></li>
-    <li><a href="">Anonymous Author 2</a></li>
-    <li><a href="">Anonymous Author 3</a></li>
+    <li><a href="">Tieu Tri Bang - 2252079 </a></li>
+    <li><a href="">Nguyen Van Hieu - 2153345 </a></li>
+    <li><a href="">Pham Huy Thien Phuc - 2053346</a></li>
 </ol>
 
 <!-- ABSTRACT -->
