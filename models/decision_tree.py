@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score,
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score,
 from utils import get_data_from_file
 
 
@@ -31,3 +30,8 @@ def decision_tree_algorithm(embedding_name= 'flatten'):
   print(f"Precision: {precision:.4f}")
   print(f"Recall: {recall:.4f}")
   print(f"F1 Score: {f1:.4f}")
+
+if __name__ == '__main__':
+  models_name = ['flatten', '2D_CNN_init', '2D_CNN_pretrained', '3D_CNN_init', '3D_CNN_pretrained']
+  for model in models_name:
+    decision_tree_algorithm(embedding_name = model)
