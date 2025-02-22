@@ -22,11 +22,11 @@ def bayesian_network_algorithm(embedding_name='flatten'):
     X = np.concatenate((train_data, val_data, test_data), axis=0)
     y = np.concatenate((train_labels, val_labels, test_labels), axis=0)
 
-    # Dimensionality reduction (if needed)
+    # Dimensionality reduction with TSNE (if needed)
     if X.shape[1] > 500:
-        print("Reducing Dimensionality")
-        pca = PCA(n_components=10, random_state=42)  # Can adjust n_components
-        X = pca.fit_transform(X)
+        print("Reducing Dimensionality with TSNE")
+        tsne = TSNE(n_components=3, perplexity=30, random_state=42)
+        X = tsne.fit_transform(X)
 
     print(X)
 
@@ -38,7 +38,7 @@ def bayesian_network_algorithm(embedding_name='flatten'):
         X_discrete[f"feature_{col}"] = pd.qcut(X[:, col], q=n_bins, duplicates='drop', labels=False)
     X_discrete['label'] = y  # Add labels
 
-    print(X_discrete)
+    # print(X_discrete)
 
     # Split back into train, val, test
     train_data_discrete = X_discrete.iloc[:len(train_data)]
@@ -60,7 +60,6 @@ def bayesian_network_algorithm(embedding_name='flatten'):
     predictions = []
     for _, row in test_data_discrete.iterrows():
         evidence = row.to_dict()
-        # print(evidence)
         true_label = evidence.pop('label')
         result = inference.map_query(variables=['label'], evidence=evidence)
         # print("Predicted Class:", result['label'])
