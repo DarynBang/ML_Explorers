@@ -80,7 +80,7 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 
  ============= flatten ============== 
  
-Max depth: 5,
+Max depth: 5, 
 Accuracy: 0.7837
 
 Max depth: 10,
