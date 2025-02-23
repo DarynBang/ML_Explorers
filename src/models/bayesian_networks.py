@@ -14,7 +14,7 @@ from pgmpy.estimators import MaximumLikelihoodEstimator, BayesianEstimator
 from pgmpy.inference import VariableElimination
 
 
-def bayesian_network_algorithm(embedding_name='flatten', load):
+def bayesian_network_algorithm(embedding_name='flatten', load_embeddings=False):
     train_data, val_data, test_data, train_labels, val_labels, test_labels = get_data_from_file(name_embedding=embedding_name)
     print(f" ============= {embedding_name} (Bayesian Network) ============== ")
 
@@ -33,14 +33,12 @@ def bayesian_network_algorithm(embedding_name='flatten', load):
         print(f'Loaded embeddings from path {save_path}!')
 
     # Discretize data
-    n_bins = 10  # Can be adjusted 
+    n_bins = 10  # Adjust as needed
     X_discrete = pd.DataFrame()
 
     for col in range(X.shape[1]):  # Iterate through columns (features)
         X_discrete[f"feature_{col}"] = pd.qcut(X[:, col], q=n_bins, duplicates='drop', labels=False)
     X_discrete['label'] = y  # Add labels
-
-    # print(X_discrete)
 
     # Split back into train, val, test
     train_data_discrete = X_discrete.iloc[:len(train_data)]
@@ -52,8 +50,9 @@ def bayesian_network_algorithm(embedding_name='flatten', load):
     for feature_col in train_data_discrete.columns[:-1]: # exclude labels
         structure.append((feature_col, 'label'))
 
-  
     model = BayesianNetwork(structure)
+
+
     model.fit(train_data_discrete, estimator=MaximumLikelihoodEstimator)
 
     # Make predictions
@@ -64,18 +63,21 @@ def bayesian_network_algorithm(embedding_name='flatten', load):
         evidence = row.to_dict()
         true_label = evidence.pop('label')
         result = inference.map_query(variables=['label'], evidence=evidence)
-        # print("Predicted Class:", result['label'])
-      
+        # predicted_label = result['label'].values.argmax() #.values to get the array and argmax to find the index of max value
         predictions.append(result['label'])
 
-    # # Compute metrics
-    # accuracy = accuracy_score(y_test.astype(str), y_pred)
-    # precision = precision_score(y_test.astype(str), y_pred, average='weighted')
-    # recall = recall_score(y_test.astype(str), y_pred, average='weighted')
-    # f1 = f1_score(y_test.astype(str), y_pred, average='weighted')
+    # Convert predictions and true labels to the same type
+    true_labels = test_data_discrete['label'].astype(str)  # Ensure consistent type
+    predictions = np.array(predictions).astype(str)
 
-    # # Print results
-    # print(f"Accuracy: {accuracy:.4f}")
-    # print(f"Precision: {precision:.4f}")
-    # print(f"Recall: {recall:.4f}")
-    # print(f"F1 Score: {f1:.4f}")
+    # Compute metrics
+    accuracy = accuracy_score(true_labels, predictions)
+    precision = precision_score(true_labels, predictions, average='weighted', zero_division=0)
+    recall = recall_score(true_labels, predictions, average='weighted', zero_division=0)
+    f1 = f1_score(true_labels, predictions, average='weighted', zero_division=0)
+
+    # Print results
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"Precision: {precision:.4f}")
+    print(f"Recall: {recall:.4f}")
+    print(f"F1 Score: {f1:.4f}")
