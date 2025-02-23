@@ -76,7 +76,9 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 ### Decision tree
 **Performance:** With each model, the depth coefficients in the range from 5 to 30 with steps of 5 will be substituted for the performance analysis. As the result, the graph showing the correlation between the depth coefficient and performance will be plotted with the accuracy at each step.
 <img src="assets/treeperformance_flatten.png" width="400">
+
  ============= flatten ============== 
+ 
 Max depth: 5
 Accuracy: 0.7837
 
