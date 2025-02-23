@@ -28,3 +28,17 @@ class Custom2DDataset(Dataset):
         x = self.data[idx]
         y = self.labels[idx]  # Label
         return x, y
+
+
+class CustomMLPDataset(Dataset):
+    def __init__(self, data, labels):
+        self.data = torch.tensor(data, dtype=torch.float32)  # Convert to tensor
+        self.labels = torch.tensor(labels, dtype=torch.long)  # Convert labels to tensor
+
+    def __len__(self):
+        return len(self.data)  # Number of samples
+
+    def __getitem__(self, idx):
+        x = self.data[idx]
+        y = self.labels[idx]  # Label
+        return x, y
