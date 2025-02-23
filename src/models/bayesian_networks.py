@@ -14,21 +14,25 @@ from pgmpy.estimators import MaximumLikelihoodEstimator, BayesianEstimator
 from pgmpy.inference import VariableElimination
 
 
-def bayesian_network_algorithm(embedding_name='flatten'):
+def bayesian_network_algorithm(embedding_name='flatten', load):
     train_data, val_data, test_data, train_labels, val_labels, test_labels = get_data_from_file(name_embedding=embedding_name)
     print(f" ============= {embedding_name} (Bayesian Network) ============== ")
 
 
-    X = np.concatenate((train_data, val_data, test_data), axis=0)
     y = np.concatenate((train_labels, val_labels, test_labels), axis=0)
+    
+    if X.shape[1] > 500 and not load_embeddings:
+        X = np.concatenate((train_data, val_data, test_data), axis=0)
 
-    # Dimensionality reduction with TSNE (if needed)
-    if X.shape[1] > 500:
         print("Reducing Dimensionality with TSNE")
         tsne = TSNE(n_components=3, perplexity=30, random_state=42)
         X = tsne.fit_transform(X)
+    
+    else:
+        save_path = f"/content/drive/MyDrive/TSNE_{embedding_name}_data.npy"
+        X = np.load(save_path)
 
-    print(X)
+        print(f'Loaded embeddings from path {save_path}!')
 
     # Discretize data
     n_bins = 10  # Can be adjusted 
