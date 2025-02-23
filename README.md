@@ -93,10 +93,83 @@ Accuracy: 0.8629
 
 Max depth: 25
 Accuracy: 0.8698
+
 <img src="assets/treeperformance_2DCNNinit.png" width="400">
+
+ ============= 2D_CNN_init ============== 
+ 
+Max depth: 5
+Accuracy: 0.8835
+
+Max depth: 10
+Accuracy: 0.9006
+
+Max depth: 15
+Accuracy: 0.9036
+
+Max depth: 20
+Accuracy: 0.8957
+
+Max depth: 25
+Accuracy: 0.8948
+
 <img src="assets/treeperformance_2DCNNpretrained.png" width="400">
+
+ ============= 2D_CNN_pretrained ============== 
+ 
+Max depth: 5
+Accuracy: 0.8620
+
+Max depth: 10
+Accuracy: 0.8918
+
+Max depth: 15
+Accuracy: 0.8771
+
+Max depth: 20
+Accuracy: 0.8796
+
+Max depth: 25
+Accuracy: 0.8815
+
 <img src="assets/treeperformance_3DCNNinit.png" width="400">
+
+ ============= 3D_CNN_init ============== 
+ 
+Max depth: 5
+Accuracy: 0.9065
+
+Max depth: 10
+Accuracy: 0.9295
+
+Max depth: 15
+Accuracy: 0.9261
+
+Max depth: 20
+Accuracy: 0.9241
+
+Max depth: 25
+Accuracy: 0.9187
+
 <img src="assets/treeperformance_3DCNNpretrained.png" width="400">
+
+ ============= 3D_CNN_pretrained ============== 
+ 
+Max depth: 5
+Accuracy: 0.9956
+
+Max depth: 10
+Accuracy: 0.9941
+
+Max depth: 15
+Accuracy: 0.9941
+
+Max depth: 20
+Accuracy: 0.9941
+
+Max depth: 25
+Accuracy: 0.9941
+
 
 **Result analysis:** Increasing max_depth allows the decision tree to become more complex and capture finer details in the data. Initially, this can improve accuracy as the model better fits the training data. However, if max_depth is too large, the model risks overfitting, meaning it memorizes noise and random variations instead of learning general patterns. Overfitting leads to poor generalization, where the model performs well on training data but poorly on unseen test data. Beyond a certain max_depth, performance may start to decrease as the model becomes overly complex, emphasizing specific instances rather than broader trends. The optimal max_depth strikes a balance between fitting the training data and generalizing to new data. 
 
