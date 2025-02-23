@@ -74,8 +74,9 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 
 ## Machine Learning Algorithm 
 ### Decision tree
-**Performance:** 
+**Performance:** With each model, the depth coefficients in the range from 5 to 30 with steps of 5 will be substituted for the performance analysis. As the result, the graph showing the correlation between the depth coefficient and performance will be plotted with the accuracy at each step
 <img src="assets/treeperformance_flatten.png" width="400">
+
 **Result analysis:** Increasing max_depth allows the decision tree to become more complex and capture finer details in the data. Initially, this can improve accuracy as the model better fits the training data. However, if max_depth is too large, the model risks overfitting, meaning it memorizes noise and random variations instead of learning general patterns. Overfitting leads to poor generalization, where the model performs well on training data but poorly on unseen test data. Beyond a certain max_depth, performance may start to decrease as the model becomes overly complex, emphasizing specific instances rather than broader trends. The optimal max_depth strikes a balance between fitting the training data and generalizing to new data. 
 
 
