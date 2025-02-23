@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score,
                              roc_auc_score, average_precision_score, roc_curve, precision_recall_curve)
 from utils import get_data_from_file
+from src.data.make_dataset import CustomMLPDataset
 
 class Adaptive_MLP(nn.Module):
     def __init__(self, embedding_dim = 2048,num_classes=6):
@@ -50,20 +51,6 @@ class Adaptive_MLP(nn.Module):
         print(f"Precision: {precision:.4f}")
         print(f"Recall: {recall:.4f}")
         print(f"F1 Score: {f1:.4f}")
-
-
-class CustomMLPDataset(Dataset):
-    def __init__(self, data, labels):
-        self.data = torch.tensor(data, dtype=torch.float32)  # Convert to tensor
-        self.labels = torch.tensor(labels, dtype=torch.long)  # Convert labels to tensor
-
-    def __len__(self):
-        return len(self.data)  # Number of samples
-
-    def __getitem__(self, idx):
-        x = self.data[idx]
-        y = self.labels[idx]  # Label
-        return x, y
 
 
 def multilayer_perceptron_algorithm(embedding_name= 'flatten'):
