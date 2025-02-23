@@ -72,6 +72,11 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 
 ### Computational Efficiency Analysis
 
+## Machine Learning Algorithm 
+### Decision tree
+
+
+
 
 ## References
 
