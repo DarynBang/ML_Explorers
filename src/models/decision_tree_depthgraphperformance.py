@@ -39,7 +39,8 @@ def decision_tree_algorithm(embedding_name='flatten', max_depths=range(5, 30, 5)
     plt.title(f'Decision Tree Accuracy vs. Max Depth for {embedding_name}')
     plt.grid(True)
     plt.show()
-    
-models_name = ['flatten', '2D_CNN_init', '2D_CNN_pretrained', '3D_CNN_init', '3D_CNN_pretrained']
-for model in models_name:
-  decision_tree_algorithm(embedding_name= model)
+
+if __name__ == '__main__':
+  models_name = ['flatten', '2D_CNN_init', '2D_CNN_pretrained', '3D_CNN_init', '3D_CNN_pretrained']
+  for model in models_name:
+    decision_tree_algorithm(embedding_name= model)
