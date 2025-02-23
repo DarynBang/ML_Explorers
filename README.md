@@ -34,7 +34,7 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 
 
 ## Embedding method
-<p align="center">
+<p align="left">
     <img src="assets/flatten.png" width="300">
     <img src="assets/2d.png" width="400">
     <img src="assets/3d.png" width="400">
