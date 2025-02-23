@@ -79,16 +79,16 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
  ============= flatten ============== 
 Max depth: 5
 Accuracy: 0.7837
- ==================================== 
+
 Max depth: 10
 Accuracy: 0.8473
- ==================================== 
+
 Max depth: 15
 Accuracy: 0.8522
- ==================================== 
+
 Max depth: 20
 Accuracy: 0.8629
- ==================================== 
+
 Max depth: 25
 Accuracy: 0.8698
 <img src="assets/treeperformance_2DCNNinit.png" width="400">
