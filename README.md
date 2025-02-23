@@ -46,7 +46,7 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 <img src="assets/3d.png" width="700">
 
 **3D-CNN**: The 3D-CNN embedding is designed to fully exploit the volumetric nature of the 28x28x28 MedMNIST datasets by applying 3D convolutional operations. In this approach, the input volume is processed directly as a 3D tensor, with convolutional kernels extending across all three dimensions (x, y, z). The architecture typically includes multiple 3D convolutional layers followed by pooling layers to reduce spatial dimensions, culminating in fully connected layers for classification. This method captures spatial dependencies and contextual information across the entire volume, making it particularly well-suited for identifying complex 3D structures, such as organ boundaries, nodule shapes, or vascular networks. However, the increased representational power comes at the cost of higher computational complexity and memory requirements compared to the flatten and 2D-CNN methods.
-### Analysis
+### Feature Analysis
 #### Flatten:
 <img src="assets/reduce_dimension_flatten.png" width="1200">
 
@@ -64,6 +64,10 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 
 **Pretrained weight:**
 <img src="assets/reduce_dimension_3d_pretrained.png" width="1200">
+### Performance Analysis
+
+### Computational Efficiency Analysis
+
 
 ## References
 
