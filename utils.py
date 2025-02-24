@@ -39,7 +39,7 @@ def get_train_data_and_labels(path_3ds):
     val_data, val_labels = shuffle(val_data, val_labels, random_state=42)
     test_data, test_labels = shuffle(test_data, test_labels, random_state=42)
 
-    return train_data, train_labels, val_data, val_labels, test_data, test_labels
+    return train_data, train_labels, val_data, val_labels, test_data, test_labels, labels_map
 
 
 def plot_images_with_labels(data, labels, label_map, num_images=10):
