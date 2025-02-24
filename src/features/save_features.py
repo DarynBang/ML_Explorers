@@ -4,6 +4,19 @@ from src.data.make_dataset import Custom2DDataset, Custom3DDataset
 from src.models.CNN2D import CNN2D_MLP
 from src.models.CNN3D import CNN3D_MLP
 from torch.nn.utils import DataLoader
+from utils import get_train_data_and_labels
+
+path_3ds = glob("MNIST/*3d*")
+
+train_data    = []
+val_data      = []
+test_data     = []
+train_labels  = []
+val_labels    = []
+test_labels   = []
+labels_map    = {}
+
+train_data, train_labels, val_data, val_labels, test_data, test_labels, labels_map = get_train_data_and_labels(path_3ds)
 
 
 flatten_train_data = np.reshape(train_data, (train_data.shape[0], -1))
