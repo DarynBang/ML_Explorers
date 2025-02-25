@@ -111,12 +111,14 @@ Flattening transforms a multi-dimensional input (e.g., images or volumes) into a
 - Limited to processing 2D information; loses depth-wise relationships.
 - Not suitable for volumetric data (e.g., medical imaging, video frames).
 
+<img src="assets/2DCNN_trained.png" width="500">
+
 **Computational Complexity:**
 For a single convolution layer with input size $$(H , W , C_{in})$$, kernel size $$(K , K , C_{in} , C_{out})$$, and output size $$(H' , W' , C_{out})$$:
 - $$O(H'x W'x K^2 x C_{in} x C_{out})$$
 - Memory usage is proportional to feature maps.
 - 
-<img src="assets/2DCNN_trained.png" width="1000">
+
 
 ####  3. 3D CNN (3D Convolutional Neural Network)
 3D CNNs extend 2D convolutions by adding a depth dimension, making them suitable for volumetric data (e.g., video, medical scans).
@@ -130,12 +132,14 @@ For a single convolution layer with input size $$(H , W , C_{in})$$, kernel size
 - Requires more memory than 2D CNNs.
 - Needs large datasets to generalize well.
 
+<img src="assets/3DCNN_trained.png" width="500">
+
 **Computational Complexity:**
 For an input of size $$(D, H, W, C_{in})$$ and a kernel of size $$(K , K , K, C_{in}, C_{out})$$, the output size is $$(D', H', W', C_{out})$$, and the complexity is:
 - $$O(D' x H' x W' x K^3 x C_{in} x C_{out})$$
 - Memory requirements are significantly higher than 2D CNNs due to additional depth dimension.
 
-<img src="assets/3DCNN_trained.png" width="1000">
+
 
 
 ## Machine Learning Algorithm 
