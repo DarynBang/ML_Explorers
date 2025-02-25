@@ -108,7 +108,7 @@ Flattening transforms a multi-dimensional input (e.g., images or volumes) into a
 - Reduces parameter count compared to fully connected networks.
 - Efficient for image-based tasks.
 
-### **Disadvantages:**
+**Disadvantages:**
 - Limited to processing 2D information; loses depth-wise relationships.
 - Not suitable for volumetric data (e.g., medical imaging, video frames).
 
