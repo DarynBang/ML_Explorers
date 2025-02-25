@@ -260,29 +260,48 @@ Accuracy: 0.9941
  ================================================================== 
 ### Naive Bayes
 
-
-Embedding Method	Accuracy	Precision	Recall	F1 Score
-Flatten	0.7714	0.7823	0.7714	0.7621
-2D_CNN_init	0.8194	0.8284	0.8194	0.8146
-2D_CNN_pretrained	0.7186	0.7311	0.7186	0.6826
-3D_CNN_init	0.8507	0.8573	0.8507	0.8492
-3D_CNN_pretrained	0.9692	0.9723	0.9692	0.9692
-
 <table>
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th>Embedding</th>
+    <th>Accuracy</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>F1 Score</th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
+    <td>Flatten</td>
+    <td>2D_CNN_init</td>
+    <td>2D_CNN_pretrained</td>
+    <td>3D_CNN_init</td>
+    <td>3D_CNN_pretrained</td>
   </tr>
   <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
+    <td>0.7714</td>
+    <td>0.8194</td>
+    <td>0.7186</td>
+    <td>0.8507</td>
+    <td>0.9692</td>
+  </tr>
+  <tr>
+    <td>0.7823</td>
+    <td>0.8284</td>
+    <td>0.7311</td>
+    <td>0.8573</td>
+    <td>0.9723</td>
+  </tr>
+  <tr>
+    <td>0.7714</td>
+    <td>0.8194</td>
+    <td>0.7186</td>
+    <td>0.8507</td>
+    <td>0.9692</td>
+  </tr>
+  <tr>
+    <td>0.7621</td>
+    <td>0.8146</td>
+    <td>0.6826</td>
+    <td>0.8492</td>
+    <td>0.9692</td>
   </tr>
 </table>
 
