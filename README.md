@@ -81,7 +81,7 @@ The PCA and t-SNE visualizations of the 3D CNN initialized weight embeddings (be
 <img src="assets/reduce_dimension_3d_pretrained.png" width="1200">
 The PCA and t-SNE visualizations of the 3D CNN pretrained weight embeddings, which have been trained on the training data and validated on the validation data, consistently demonstrate clear clustering and a similar distribution across the train, validation, and test sets. This uniformity highlights the model’s ability to effectively capture and preserve the spatial information of the three-dimensional data, leveraging the 3D CNN’s capacity to understand the depth, width, and height dimensions. In both PCA and t-SNE plots, classes form distinct clusters—such as the tight grouping of blue (Class 1) and green (Class 2) points—indicating improved separability compared to earlier stages or other architectures. The consistent patterns across datasets underscore the pretrained 3D CNN’s robustness in generalizing spatial relationships, making it well-suited for handling complex 3D data structures.
 
-### Performance and Computational Efficiency Analysis
+### Computational Efficiency Analysis
 This document provides a computational comparison between Flattening, 2D Convolutional Neural Networks (2D CNN), and 3D Convolutional Neural Networks (3D CNN) in terms of parameter count, memory consumption, and computational complexity.
 
 #### 1. Flatten
@@ -111,13 +111,11 @@ Flattening transforms a multi-dimensional input (e.g., images or volumes) into a
 - Limited to processing 2D information; loses depth-wise relationships.
 - Not suitable for volumetric data (e.g., medical imaging, video frames).
 
-<img src="assets/2DCNN_trained.png" width="500">
 
 **Computational Complexity:**
 For a single convolution layer with input size $$(H , W , C_{in})$$, kernel size $$(K , K , C_{in} , C_{out})$$, and output size $$(H' , W' , C_{out})$$:
 - $$O(H'x W'x K^2 x C_{in} x C_{out})$$
 - Memory usage is proportional to feature maps.
-- 
 
 
 ####  3. 3D CNN (3D Convolutional Neural Network)
@@ -132,14 +130,28 @@ For a single convolution layer with input size $$(H , W , C_{in})$$, kernel size
 - Requires more memory than 2D CNNs.
 - Needs large datasets to generalize well.
 
-<img src="assets/3DCNN_trained.png" width="500">
-
 **Computational Complexity:**
 For an input of size $$(D, H, W, C_{in})$$ and a kernel of size $$(K , K , K, C_{in}, C_{out})$$, the output size is $$(D', H', W', C_{out})$$, and the complexity is:
 - $$O(D' x H' x W' x K^3 x C_{in} x C_{out})$$
 - Memory requirements are significantly higher than 2D CNNs due to additional depth dimension.
 
+### Performance Analysis
+After passing through 2D CNN or 3D CNN, the embedding is fed into an MLP (Multi-Layer Perceptron) to fine-tune the figure, ensuring that it fits well with the training set of the dataset. The MLP acts as a feature adjuster, refining the extracted representations to improve model performance on the given data.
 
+Here are the performance figures over epochs for 2D and 3D CNN when running on the MedMNIST dataset.
+<img src="assets/2DCNN_trained.png" width="500">
+
+The training and validation loss increase instead of decreasing, indicating that the model struggles to learn meaningful features. After the first few epochs, the loss fluctuates and stabilizes at a high value (~1.8), suggesting that the model is not converging well. The test loss (1.7170) is high, implying poor generalization. This suggests that the 2D CNN may not be capturing the necessary spatial information effectively.
+
+
+<img src="assets/3DCNN_trained.png" width="500">
+
+The training and validation loss decrease rapidly in the first few epochs, indicating effective learning. The loss stabilizes at a low value (~0.2041), suggesting that the model has converged well. Some fluctuations in validation loss are observed, but overall, it remains relatively low. The low test loss (0.2041) suggests good generalization, making this model more suitable for the dataset.
+
+**Conclusion:**
+- The 3D CNN significantly outperforms the 2D CNN in this case, achieving much lower loss values.
+- The 2D CNN struggles to learn useful features, leading to poor convergence.
+- Since MedMNIST contains medical imaging data, 3D CNNs may be better suited for capturing spatial relationships in volumetric data.
 
 
 ## Machine Learning Algorithm 
