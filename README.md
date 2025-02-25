@@ -80,9 +80,68 @@ The PCA and t-SNE visualizations of the 3D CNN initialized weight embeddings (be
 
 <img src="assets/reduce_dimension_3d_pretrained.png" width="1200">
 The PCA and t-SNE visualizations of the 3D CNN pretrained weight embeddings, which have been trained on the training data and validated on the validation data, consistently demonstrate clear clustering and a similar distribution across the train, validation, and test sets. This uniformity highlights the model’s ability to effectively capture and preserve the spatial information of the three-dimensional data, leveraging the 3D CNN’s capacity to understand the depth, width, and height dimensions. In both PCA and t-SNE plots, classes form distinct clusters—such as the tight grouping of blue (Class 1) and green (Class 2) points—indicating improved separability compared to earlier stages or other architectures. The consistent patterns across datasets underscore the pretrained 3D CNN’s robustness in generalizing spatial relationships, making it well-suited for handling complex 3D data structures.
+
 ### Performance Analysis
 
+<img src="assets/2DCNN_trained" width="1200">
+<img src="assets/3DCNN_trained" width="1200">
+
 ### Computational Efficiency Analysis
+This document provides a computational comparison between Flattening, 2D Convolutional Neural Networks (2D CNN), and 3D Convolutional Neural Networks (3D CNN) in terms of parameter count, memory consumption, and computational complexity.
+
+#### 1. Flatten
+Flattening transforms a multi-dimensional input (e.g., images or volumes) into a 1D vector, which is then processed by fully connected layers.
+
+**Advantages:**
+- Simple and computationally efficient.
+- Requires fewer parameters than CNNs.
+- Suitable for simple tasks with small datasets.
+
+**Disadvantages:**
+- Ignores spatial information (no local feature extraction).
+- Performs poorly on complex structured data.
+
+**Computational Complexity:**
+- \(O(n)\) (linear transformation)
+- Requires one matrix multiplication in fully connected layers.
+
+---
+
+####  2. 2D CNN (Convolutional Neural Network)
+2D CNNs process 2D images using convolutional layers with kernels (filters) that slide spatially across width and height.
+
+**Advantages:**
+- Captures spatial hierarchies in data.
+- Reduces parameter count compared to fully connected networks.
+- Efficient for image-based tasks.
+
+### **Disadvantages:**
+- Limited to processing 2D information; loses depth-wise relationships.
+- Not suitable for volumetric data (e.g., medical imaging, video frames).
+
+**Computational Complexity:**
+For a single convolution layer with input size \( (H, W, C_{in}) \), kernel size \( (K, K, C_{in}, C_{out}) \), and output size \( (H', W', C_{out}) \):
+- \(O(H' W' K^2 C_{in} C_{out})\)
+- Memory usage is proportional to feature maps.
+
+---
+
+####  3. 3D CNN (3D Convolutional Neural Network)
+3D CNNs extend 2D convolutions by adding a depth dimension, making them suitable for volumetric data (e.g., video, medical scans).
+
+**Advantages:**
+- Captures spatial and temporal/depth-based features.
+- Suitable for volumetric data like MRI scans, CT scans, and video analysis.
+
+**Disadvantages:**
+- Significantly higher computational cost.
+- Requires more memory than 2D CNNs.
+- Needs large datasets to generalize well.
+
+**Computational Complexity:**
+For an input of size \( (D, H, W, C_{in}) \) and a kernel of size \( (K, K, K, C_{in}, C_{out}) \), the output size is \( (D', H', W', C_{out}) \), and the complexity is:
+- \(O(D' H' W' K^3 C_{in} C_{out})\)
+- Memory requirements are significantly higher than 2D CNNs due to additional depth dimension.
 
 ## Machine Learning Algorithm 
 ### Decision tree
