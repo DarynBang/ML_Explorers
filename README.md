@@ -315,6 +315,9 @@ Conditional Independence between features given the class is naturally presumed 
 
 **Result analysis:** Naïve Bayes works best when features are independent, but CNN-extracted features are often correlated. Despite that, 3D CNN-based models performed the best, possibly because the feature dependencies were still manageable for GNB.
 
+ ================================================================== 
+### Graphical Models (Bayesian Networks, HMM)
+
 ## References
 <a id="1">[1]</a> 
 ```
