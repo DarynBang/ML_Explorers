@@ -53,7 +53,7 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 
 ### Feature Analysis
 
-Note: 'nodulemnist3d' is the class 0, 'vesselmnist3d' is the class 1, 'synapsemnist3d' is the class 2, 'adrenalmnist3d' is the class 3, 'fracturemnist3d' is the class 4, 'organmnist3d' is the class 5 in all the following images in this section
+Note: 'nodulemnist3d' is the class 0, 'vesselmnist3d' is the class 1, 'synapsemnist3d' is the class 2, 'adrenalmnist3d' is the class 3, 'fracturemnist3d' is the class 4, 'organmnist3d' is the class 5 in all the images in this section
 
 #### Flatten:
 
