@@ -13,7 +13,7 @@ def naive_bayes_algorithm(embedding_name= 'flatten'):
   X = np.concatenate((train_data, val_data, test_data), axis=0)
   y = np.concatenate((train_labels, val_labels, test_labels), axis=0)
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-  clf = GaussianNB()  # max_depth controls tree complexity
+  clf = GaussianNB() 
   clf.fit(X_train, y_train)
   # Predict on test data
   y_pred = clf.predict(X_test)
