@@ -4,7 +4,7 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score,
-from utils import get_data_from_file
+from src.utils import get_data_from_file
 
 
 def decision_tree_algorithm(embedding_name= 'flatten'):
