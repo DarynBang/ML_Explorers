@@ -276,34 +276,35 @@ Accuracy: 0.9941
     <td>0.7621</td>
   </tr>
   <tr>
-    <td>0.7714</td>
+    <td>2D_CNN_init</td>
     <td>0.8194</td>
-    <td>0.7186</td>
-    <td>0.8507</td>
-    <td>0.9692</td>
-  </tr>
-  <tr>
-    <td>0.7823</td>
     <td>0.8284</td>
-    <td>0.7311</td>
-    <td>0.8573</td>
-    <td>0.9723</td>
-  </tr>
-  <tr>
-    <td>0.7714</td>
     <td>0.8194</td>
-    <td>0.7186</td>
-    <td>0.8507</td>
-    <td>0.9692</td>
+    <td>0.8146</td>
   </tr>
   <tr>
-    <td>0.7621</td>
-    <td>0.8146</td>
+    <td>2D_CNN_pretrained</td>
+    <td>0.7186</td>
+    <td>0.7311</td>
+    <td>0.7186</td>
     <td>0.6826</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_init</td>
+    <td>0.8507</td>
+    <td>0.8573</td>
+    <td>0.8507</td>
     <td>0.8492</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_pretrained</td>
+    <td>0.9692</td>
+    <td>0.9723</td>
+    <td>0.9692</td>
     <td>0.9692</td>
   </tr>
 </table>
+
 
 
 
