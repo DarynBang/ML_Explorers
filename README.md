@@ -54,8 +54,10 @@ In this study, we utilize six 3D datasets from MedMNIST—OrganMNIST3D, NoduleMN
 #### Flatten:
 <img src="assets/reduce_dimension_flatten.png" width="1200">
 The PCA visualizations of the train, validation, and test sets show remarkably similar distributions, with clusters of points, particularly for Classes 0 and 2, appearing quite consistent across the three datasets. However, a significant drawback is the lack of separation between classes, as there is substantial overlapping, making it challenging to distinguish between them effectively. In contrast, the t-SNE visualizations reveal distinctly different distributions across the train, validation, and test sets, with the training data showing tighter, more separated clusters compared to the validation and test sets. This discrepancy suggests that while t-SNE better captures the local structure and separability within the training data, the model fitted on this distribution struggles to generalize to the validation and test sets, indicating potential issues with overfitting or insufficient representation of the data's variability across all stages.
+
 #### 2D-CNN:
 **Initialization weight:**
+
 <img src="assets/reduce_dimension_2d_init.png" width="1200">
 
 The PCA visualizations of the 2D CNN initialized weight embeddings (before training) for the train, validation, and test sets demonstrate a consistent distribution across all three datasets, suggesting that the initialization preserves a uniform structure before any training occurs. Compared to the flatten embeddings, these 2D CNN embeddings appear to offer an advantage, as they can capture the spatial relationships of 2D dimensions such as width and height, leading to potentially richer representations of the data. Furthermore, the distributions in these PCA plots show improved separation among classes compared to the flatten embeddings; for instance, Class 2 forms a distinct, tight cluster, indicating better class separability. This enhanced structure highlights the benefit of leveraging 2D CNN architectures, which may better preserve meaningful patterns in the data, even in the initial, untrained state.
