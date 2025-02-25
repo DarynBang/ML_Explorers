@@ -31,7 +31,7 @@ All experiments run successfully on Google Colab with:
 - PyTorch version: 2.5.1+cu124
 
 ## Introduction
-The classification of 3D medical images presents unique challenges and opportunities in the field of medical imaging and machine learning. In this study, we leverage the MedMNIST dataset, a standardized benchmark for medical imaging tasks, to develop and evaluate classifiers for 3D image data. We explore three distinct embedding approaches: a flatten-based method, a 2D Convolutional Neural Network (CNN), and a 3D CNN, each designed to capture spatial features at varying levels of complexity. Results demonstrate that the 3D CNN outperforms simpler embeddings in capturing intricate volumetric patterns, though trade-offs in computational cost are notable. This work provides insights into the suitability of these approaches for 3D medical image classification and establishes a foundation for future advancements in automated diagnostic systems.
+The classification of 3D medical images presents unique challenges and opportunities in the field of medical imaging and machine learning. In this study, we leverage the MedMNIST [[1]](#1) dataset, a standardized benchmark for medical imaging tasks, to develop and evaluate classifiers for 3D image data. We explore three distinct embedding approaches: a flatten-based method, a 2D Convolutional Neural Network (CNN), and a 3D CNN, each designed to capture spatial features at varying levels of complexity. Results demonstrate that the 3D CNN outperforms simpler embeddings in capturing intricate volumetric patterns, though trade-offs in computational cost are notable. This work provides insights into the suitability of these approaches for 3D medical image classification and establishes a foundation for future advancements in automated diagnostic systems.
 ## Datasets
 <img src="assets/medmnist++.png" width="1000">
 
@@ -263,5 +263,15 @@ Accuracy: 0.9941
 ## References
 
 ```
-
+<a id="1">[1]</a> 
+@article{yang2023medmnist,
+  title={Medmnist v2-a large-scale lightweight benchmark for 2d and 3d biomedical image classification},
+  author={Yang, Jiancheng and Shi, Rui and Wei, Donglai and Liu, Zequan and Zhao, Lin and Ke, Bilian and Pfister, Hanspeter and Ni, Bingbing},
+  journal={Scientific Data},
+  volume={10},
+  number={1},
+  pages={41},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
 ```
