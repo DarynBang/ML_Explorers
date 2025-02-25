@@ -257,8 +257,35 @@ Accuracy: 0.9941
 
 **Result analysis:** Increasing max_depth allows the decision tree to become more complex and capture finer details in the data. Initially, this can improve accuracy as the model better fits the training data. However, if max_depth is too large, the model risks overfitting, meaning it memorizes noise and random variations instead of learning general patterns. Overfitting leads to poor generalization, where the model performs well on training data but poorly on unseen test data. Beyond a certain max_depth, performance may start to decrease as the model becomes overly complex, emphasizing specific instances rather than broader trends. The optimal max_depth strikes a balance between fitting the training data and generalizing to new data. 
 
-
+ ================================================================== 
 ### Naive Bayes
+
+
+Embedding Method	Accuracy	Precision	Recall	F1 Score
+Flatten	0.7714	0.7823	0.7714	0.7621
+2D_CNN_init	0.8194	0.8284	0.8194	0.8146
+2D_CNN_pretrained	0.7186	0.7311	0.7186	0.6826
+3D_CNN_init	0.8507	0.8573	0.8507	0.8492
+3D_CNN_pretrained	0.9692	0.9723	0.9692	0.9692
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+</table>
+
 
 
 
