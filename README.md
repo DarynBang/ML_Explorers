@@ -270,10 +270,10 @@ Accuracy: 0.9941
   </tr>
   <tr>
     <td>Flatten</td>
-    <td>2D_CNN_init</td>
-    <td>2D_CNN_pretrained</td>
-    <td>3D_CNN_init</td>
-    <td>3D_CNN_pretrained</td>
+    <td>0.7714</td>
+    <td>0.7823</td>
+    <td>0.7714</td>
+    <td>0.7621</td>
   </tr>
   <tr>
     <td>0.7714</td>
