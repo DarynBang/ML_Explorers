@@ -102,7 +102,7 @@ Flattening transforms a multi-dimensional input (e.g., images or volumes) into a
 - Performs poorly on complex structured data.
 
 **Computational Complexity:**
-- \(O(n)\) (linear transformation)
+- $$O(n)$$ (linear transformation)
 - Requires one matrix multiplication in fully connected layers.
 
 ---
@@ -120,7 +120,7 @@ Flattening transforms a multi-dimensional input (e.g., images or volumes) into a
 - Not suitable for volumetric data (e.g., medical imaging, video frames).
 
 **Computational Complexity:**
-For a single convolution layer with input size $$(H, W, C_{in})$$, kernel size $$(K, K, C_{in}, C_{out})$$, and output size \( (H', W', C_{out}) \):
+For a single convolution layer with input size $$(H, W, C_{in})$$, kernel size $$(K, K, C_{in}, C_{out})$$, and output size $$(H', W', C_{out})$$:
 - $$O(H' W' K^2 C_{in} C_{out})$$
 - Memory usage is proportional to feature maps.
 
@@ -139,8 +139,8 @@ For a single convolution layer with input size $$(H, W, C_{in})$$, kernel size $
 - Needs large datasets to generalize well.
 
 **Computational Complexity:**
-For an input of size \( (D, H, W, C_{in}) \) and a kernel of size \( (K, K, K, C_{in}, C_{out}) \), the output size is \( (D', H', W', C_out) \), and the complexity is:
-- \(O(D' H' W' K^3 C_{in} C_{out})\)
+For an input of size $$(D, H, W, C_{in})$$ and a kernel of size $$(K, K, K, C_{in}, C_{out})$$, the output size is $$(D', H', W', C_out)$$, and the complexity is:
+- $$O(D' H' W' K^3 C_{in} C_{out})$$
 - Memory requirements are significantly higher than 2D CNNs due to additional depth dimension.
 
 ## Machine Learning Algorithm 
