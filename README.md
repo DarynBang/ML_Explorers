@@ -261,9 +261,7 @@ Accuracy: 0.9941
 
 
 ## References
-<a id="1">[1]</a> 
-```
-@article{yang2023medmnist,
+<a id="1">[1]</a> @article{yang2023medmnist,
   title={Medmnist v2-a large-scale lightweight benchmark for 2d and 3d biomedical image classification},
   author={Yang, Jiancheng and Shi, Rui and Wei, Donglai and Liu, Zequan and Zhao, Lin and Ke, Bilian and Pfister, Hanspeter and Ni, Bingbing},
   journal={Scientific Data},
