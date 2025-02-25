@@ -305,7 +305,7 @@ Accuracy: 0.9941
   </tr>
 </table>
 
-For the Naive Bayes algorithm, we decided to use the base smoothing value provided in the Scikit-learn, which is 1e-9, to stabilize variance estimates when features have very small variances. The table above shows that the 3D embeddings, regardless of whether its before or after pretraining, performs significantly better than the other embedding methods. This is expected as the original data were 3-dimensional. However, an interesting observation shows that 2D_CNN_pretrained has the worst performance, likely due to a domain mismatch in pretraining.
+For the Naive Bayes algorithm, we decided to use the base smoothing value provided in the Scikit-learn, which is 1e-9, to stabilize variance estimates when features have very small variances. The table above shows that the 3D embeddings, regardless of whether its before or after pretraining, performs significantly better than the other embedding methods. This is expected as the original data were 3-dimensional. However, an interesting observation shows that 2D_CNN_pretrained has the worst performance, likely due to a domain mismatch between pretrained features from a 2D CNN model and the dataset.
 
 
 
