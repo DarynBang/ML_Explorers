@@ -139,7 +139,7 @@ For a single convolution layer with input size \( (H, W, C_{in}) \), kernel size
 - Needs large datasets to generalize well.
 
 **Computational Complexity:**
-For an input of size \( (D, H, W, C_{in}) \) and a kernel of size \( (K, K, K, C_{in}, C_{out}) \), the output size is \( (D', H', W', C_{out}) \), and the complexity is:
+For an input of size \( (D, H, W, C_{in}) \) and a kernel of size \( (K, K, K, C_{in}, C_{out}) \), the output size is \( (D', H', W', C_out) \), and the complexity is:
 - \(O(D' H' W' K^3 C_{in} C_{out})\)
 - Memory requirements are significantly higher than 2D CNNs due to additional depth dimension.
 
