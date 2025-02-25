@@ -305,15 +305,15 @@ Accuracy: 0.9941
   </tr>
 </table>
 
-In this section for the Naive Bayes algorithm, we utilize the Scikit-learn library with default parameters to fit and make predictions on the embeddings. The table above shows that the 3D embeddings, regardless of whether its before or after pretraining, performs significantly better than the other embedding methods. This is expected as the original data were 3-dimensional. However, an interesting observation shows that 2D_CNN_pretrained has the worst performance, likely due to a domain mismatch.
+In this section, we discuss about the Naive Bayes algorithm and specifically its Gaussian variant. we utilize the Scikit-learn library with default parameters to fit and make predictions on the embeddings. The table above shows that the 3D embeddings, regardless of whether its before or after pretraining, performs significantly better than the other embedding methods. This is expected as the original data were 3-dimensional. However, an interesting observation shows that 2D_CNN_pretrained has the worst performance, likely due to a dimensional mismatch.
 
-In terms of sparse feature handling, Gaussian Naïve Bayes (GNB) is not ideal for handling sparse features because it assumes a Gaussian distribution, which may not be well-suited for high-dimensional, sparse data.Flattened embeddings likely resulted in a less structured representation, leading to an accuracy of 77.14%. CNN-based embeddings (especially 3D_CNN_pretrained at 96.92%) performed significantly better, likely because convolutional networks extract denser, more meaningful features before classification.
+In terms of sparse feature handling, Gaussian Naïve Bayes (GNB) is not ideal for handling sparse features because it assumes a Gaussian distribution, which may not be well-suited for high-dimensional, sparse data.Flattened embeddings likely resulted in a less structured representation, leading to an accuracy of 77.14%. 3D CNN-based embeddings performed significantly better, likely because 3D convolutional networks excel at capturing volumetric information, being able to extract denser, more meaningful features before classification.
 
 Scikit-learn’s GaussianNB includes a var_smoothing parameter (default: 1e-9) to stabilize variance estimates when features have very small variances. For low-variance features, GaussianNB may overfit, leading to unstable predictions. Model trained 2D_CNN_pretrained embeddings (71.86% accuracy) might have suffered due to a mismatch between pretrained features and the dataset, leading to variance underestimation. Smoothing helps prevent division by very small variances, which might explain why performance did not drop further.
 
 Conditional Independence between features given the class is naturally presumed by Gaussian Naive Bayes algorith; however, CNN-extracted embeddings are typically highly correlated due to the way it is computed. Flattened embeddings likely had higher independence, making them better suited for GNB than some CNN-pretrained features. 3D CNN-pretrained embeddings (96.92%) had the best performance, suggesting that the extracted features, while correlated, were still structured in a way that aligned well with GNB’s assumptions. 2D_CNN_pretrained performed worse (71.86%), possibly because the extracted features had strong dependencies that GNB could not model effectively.
 
-**Result analysis:** 
+**Result analysis:** Naïve Bayes works best when features are independent, but CNN-extracted features are often correlated. Despite that, 3D CNN-based models performed the best, possibly because the feature dependencies were still manageable for GNB.
 
 ## References
 <a id="1">[1]</a> 
