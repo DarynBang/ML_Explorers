@@ -4,7 +4,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score,
-from utils import get_data_from_file
+from src.utils import get_data_from_file
 
 def naive_bayes_algorithm(embedding_name= 'flatten'):
   train_data, val_data, test_data, train_labels, val_labels, test_labels = get_data_from_file(name_embedding = embedding_name)
