@@ -163,20 +163,12 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 
  ============= flatten ============== 
  
-Max depth: 5, 
-Accuracy: 0.7837
-
-Max depth: 10,
-Accuracy: 0.8473
-
-Max depth: 15,
-Accuracy: 0.8522
-
-Max depth: 20,
-Accuracy: 0.8629
-
-Max depth: 25,
-Accuracy: 0.8698
+ Max Depth  Accuracy  Precision   Recall  F1 Score
+         5  0.783651   0.808604 0.783651  0.782979
+        10  0.847283   0.854890 0.847283  0.846956
+        15  0.852178   0.857412 0.852178  0.851908
+        20  0.862947   0.865628 0.862947  0.862577
+        25  0.869799   0.871304 0.869799  0.869791
 
 <img src="assets/treeperformance_2DCNNinit.png" width="400">
 
