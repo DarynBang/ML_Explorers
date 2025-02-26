@@ -176,77 +176,49 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 
  ============= 2D_CNN_init ============== 
  
-Max depth: 5,
-Accuracy: 0.8835
-
-Max depth: 10,
-Accuracy: 0.9006
-
-Max depth: 15,
-Accuracy: 0.9036
-
-Max depth: 20,
-Accuracy: 0.8957
-
-Max depth: 25,
-Accuracy: 0.8948
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 5         | 0.883505 | 0.883267  | 0.883505 | 0.883099 |
+| 10        | 0.900636 | 0.900718  | 0.900636 | 0.900612 |
+| 15        | 0.903573 | 0.903768  | 0.903573 | 0.903510 |
+| 20        | 0.895742 | 0.895717  | 0.895742 | 0.895608 |
+| 25        | 0.894763 | 0.894838  | 0.894763 | 0.894700 |
 
 <img src="assets/treeperformance_2DCNNpretrained.png" width="400">
 
  ============= 2D_CNN_pretrained ============== 
  
-Max depth: 5,
-Accuracy: 0.8620
-
-Max depth: 10,
-Accuracy: 0.8918
-
-Max depth: 15,
-Accuracy: 0.8771
-
-Max depth: 20,
-Accuracy: 0.8796
-
-Max depth: 25,
-Accuracy: 0.8815
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 5         | 0.861968 | 0.861571  | 0.861968 | 0.860995 |
+| 10        | 0.891826 | 0.891916  | 0.891826 | 0.891008 |
+| 15        | 0.877141 | 0.876791  | 0.877141 | 0.875809 |
+| 20        | 0.879589 | 0.879295  | 0.879589 | 0.878279 |
+| 25        | 0.881547 | 0.880992  | 0.881547 | 0.880747 |
 
 <img src="assets/treeperformance_3DCNNinit.png" width="400">
 
  ============= 3D_CNN_init ============== 
  
-Max depth: 5,
-Accuracy: 0.9065
-
-Max depth: 10,
-Accuracy: 0.9295
-
-Max depth: 15,
-Accuracy: 0.9261
-
-Max depth: 20,
-Accuracy: 0.9241
-
-Max depth: 25,
-Accuracy: 0.9187
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 5         | 0.906510 | 0.907809  | 0.906510 | 0.906656 |
+| 10        | 0.929515 | 0.929580  | 0.929515 | 0.929477 |
+| 15        | 0.926089 | 0.926046  | 0.926089 | 0.925962 |
+| 20        | 0.924131 | 0.924283  | 0.924131 | 0.924021 |
+| 25        | 0.918747 | 0.918625  | 0.918747 | 0.918564 |
 
 <img src="assets/treeperformance_3DCNNpretrained.png" width="400">
 
  ============= 3D_CNN_pretrained ============== 
  
-Max depth: 5,
-Accuracy: 0.9956
-
-Max depth: 10,
-Accuracy: 0.9941
-
-Max depth: 15,
-Accuracy: 0.9941
-
-Max depth: 20,
-Accuracy: 0.9941
-
-Max depth: 25,
-Accuracy: 0.9941
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 5         | 0.995595 | 0.995602  | 0.995595 | 0.995595 |
+| 10        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
+| 15        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
+| 20        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
+| 25        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
 
 
 **Result analysis:** Increasing max_depth allows the decision tree to become more complex and capture finer details in the data. Initially, this can improve accuracy as the model better fits the training data. However, if max_depth is too large, the model risks overfitting, meaning it memorizes noise and random variations instead of learning general patterns. Overfitting leads to poor generalization, where the model performs well on training data but poorly on unseen test data. Beyond a certain max_depth, performance may start to decrease as the model becomes overly complex, emphasizing specific instances rather than broader trends. The optimal max_depth strikes a balance between fitting the training data and generalizing to new data. 
