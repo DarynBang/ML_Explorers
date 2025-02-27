@@ -274,6 +274,7 @@ Conditional Independence between features given the class is naturally presumed 
 
  ================================================================== 
 ### Graphical Models (Bayesian Networks, HMM)
+Graphical models, including Bayesian networks and Hidden Markov Models (HMMs), are powerful tools when dealing with data that exhibits complex dependencies and uncertainties. However, they are generally infeasible when dealing with high dimensional data for 3D medical image classification tasks, even after the data is flattened or transformed using a 3D CNNs.
 
 ## References
 <a id="1">[1]</a> 
