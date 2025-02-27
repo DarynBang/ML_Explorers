@@ -280,7 +280,7 @@ Conditional Independence between features given the class is naturally presumed 
 
  ================================================================== 
 ### Graphical Models (Bayesian Networks, HMM)
-Graphical models, including Bayesian Networks and Hidden Markov Models (HMMs), are powerful tools when dealing with data that exhibits complex dependencies and uncertainties. However, they are generally infeasible when dealing with high dimensional data such as for the 3D medical image classification tasks, even after the data has been flattened or transformed using 2 and 3D CNNs. Consequently, we decided to apply TSNE onto the embeddings to map them into a lower dimensional, so that applying Graphical Models would be more practical. Despite that the models would most likely not perform well, due to the conflicting natures of the models as well as the data, we show our results below:
+Graphical models, including Bayesian Networks and Hidden Markov Models (HMMs), are powerful tools when dealing with data that exhibits complex dependencies and uncertainties. However, they are generally infeasible when dealing with high dimensional data such as for the 3D medical image classification tasks, even after the data has been flattened or transformed using 2 and 3D CNNs. Consequently, we decided to apply TSNE onto the embeddings to map them into a lower dimensional, so that applying Graphical Models would be more practical. Despite that the models would most likely not perform well, due to the conflicting natures of the models as well as the data, we show our findings and observations below:
 
 ## References
 <a id="1">[1]</a> 
