@@ -159,8 +159,6 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 ### Decision tree
 **Performance:** With each model, the depth coefficients in the range from 5 to 30 with steps of 5 will be substituted for the performance analysis. As the result, the graph showing the correlation between the depth coefficient and performance will be plotted with the accuracy at each step.
 
-<img src="assets/treeperformance_flatten.png" width="400">
-
  ============= flatten ============== 
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
@@ -170,9 +168,6 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 15        | 0.852178 | 0.857412  | 0.852178 | 0.851908 |
 | 20        | 0.862947 | 0.865628  | 0.862947 | 0.862577 |
 | 25        | 0.869799 | 0.871304  | 0.869799 | 0.869791 |
-
-
-<img src="assets/treeperformance_2DCNNinit.png" width="400">
 
  ============= 2D_CNN_init ============== 
  
@@ -184,8 +179,6 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 20        | 0.895742 | 0.895717  | 0.895742 | 0.895608 |
 | 25        | 0.894763 | 0.894838  | 0.894763 | 0.894700 |
 
-<img src="assets/treeperformance_2DCNNpretrained.png" width="400">
-
  ============= 2D_CNN_pretrained ============== 
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
@@ -195,8 +188,6 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 15        | 0.877141 | 0.876791  | 0.877141 | 0.875809 |
 | 20        | 0.879589 | 0.879295  | 0.879589 | 0.878279 |
 | 25        | 0.881547 | 0.880992  | 0.881547 | 0.880747 |
-
-<img src="assets/treeperformance_3DCNNinit.png" width="400">
 
  ============= 3D_CNN_init ============== 
  
@@ -208,8 +199,6 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 20        | 0.924131 | 0.924283  | 0.924131 | 0.924021 |
 | 25        | 0.918747 | 0.918625  | 0.918747 | 0.918564 |
 
-<img src="assets/treeperformance_3DCNNpretrained.png" width="400">
-
  ============= 3D_CNN_pretrained ============== 
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
@@ -219,6 +208,8 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 15        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
 | 20        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
 | 25        | 0.994126 | 0.994189  | 0.994126 | 0.994132 |
+
+<img src="assets/f1_graph.png" width="600">
 
 
 **Result analysis:** Increasing max_depth allows the decision tree to become more complex and capture finer details in the data. Initially, this can improve accuracy as the model better fits the training data. However, if max_depth is too large, the model risks overfitting, meaning it memorizes noise and random variations instead of learning general patterns. Overfitting leads to poor generalization, where the model performs well on training data but poorly on unseen test data. Beyond a certain max_depth, performance may start to decrease as the model becomes overly complex, emphasizing specific instances rather than broader trends. The optimal max_depth strikes a balance between fitting the training data and generalizing to new data. 
