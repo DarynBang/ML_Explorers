@@ -212,9 +212,12 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 <img src="assets/f1_graph.png" width="800">
 
 
-**Result analysis:** The 3D_CNN_pretrained model performs the best, staying close to 1.0 at all depths, meaning it makes almost perfect predictions. The 3D_CNN_init model also does well but drops slightly at deeper depths. The 2D_CNN_init and 2D_CNN_pretrained models have good F1 scores, but the pretrained version peaks early and then declines a bit, possibly due to overfitting. The flatten model starts with the lowest F1 score but improves with depth, showing that deeper trees help compensate for simpler embeddings. Most models perform best at depths 10-15, with deeper trees not always leading to better results. In general, pretrained models outperform models trained from scratch, and 3D CNN models work better than 2D CNN models, proving that richer feature extraction leads to better classification.
+**Analysis:** 
+Performance: The 3D_CNN_pretrained model performs the best, staying close to 1 at all depths, meaning it makes almost perfect predictions. The 3D_CNN_init model also does well but drops slightly at deeper depths. The 2D_CNN_init and 2D_CNN_pretrained models have good F1 scores, but the pretrained version peaks early and then declines a bit, possibly due to overfitting. The flatten model starts with the lowest F1 score but improves with depth, showing that deeper trees help compensate for simpler embeddings. Most models perform best at depths 10-15, with deeper trees not always leading to better results. In general, pretrained models outperform models trained from scratch, and 3D CNN models work better than 2D CNN models, proving that richer feature extraction leads to better classification.
 
 Storage: As the depth increases, storage requirements grow significantly. A deeper tree has more nodes, which increases memory usage for storing the tree structure and learned parameters. This means that deeper trees require substantially more memory, making them less efficient for large datasets, which tends to store more details about training data, increasing the risk of overfitting.
+
+Speed: As the depth increases, speed decreases in both training and inference. Training takes longer because deeper trees require more splits and calculations. Inference also slows down since each prediction must traverse more levels from the root to a leaf node, increasing the number of comparisons. This added computational cost can make deep trees impractical for large datasets or real-time applications.
 
  ================================================================== 
 ### Naive Bayes
