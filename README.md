@@ -212,7 +212,7 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 <img src="assets/f1_graph.png" width="800">
 
 
-**Result analysis:** Increasing max_depth allows the decision tree to become more complex and capture finer details in the data. Initially, this can improve accuracy as the model better fits the training data. However, if max_depth is too large, the model risks overfitting, meaning it memorizes noise and random variations instead of learning general patterns. Overfitting leads to poor generalization, where the model performs well on training data but poorly on unseen test data. Beyond a certain max_depth, performance may start to decrease as the model becomes overly complex, emphasizing specific instances rather than broader trends. The optimal max_depth strikes a balance between fitting the training data and generalizing to new data. 
+**Result analysis:** The 3D_CNN_pretrained model performs the best, staying close to 1.0 at all depths, meaning it makes almost perfect predictions. The 3D_CNN_init model also does well but drops slightly at deeper depths. The 2D_CNN_init and 2D_CNN_pretrained models have good F1 scores, but the pretrained version peaks early and then declines a bit, possibly due to overfitting. The flatten model starts with the lowest F1 score but improves with depth, showing that deeper trees help compensate for simpler embeddings. Most models perform best at depths 10-15, with deeper trees not always leading to better results. In general, pretrained models outperform models trained from scratch, and 3D CNN models work better than 2D CNN models, proving that richer feature extraction leads to better classification.
 
  ================================================================== 
 ### Naive Bayes
