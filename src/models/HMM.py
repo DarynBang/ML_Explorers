@@ -30,13 +30,9 @@ def hidden_markov_model_algorithm(embedding_name= 'flatten'):
   y_pred = []
   y_score = []
   for symbols in X_test:
-      # Compute the likelihood of the symbols for each HMM
       likelihoods = [hmm.score(symbols) for hmm in hmms]
       # Select the class with the highest likelihood
       y_pred.append(np.argmax(likelihoods))
-      # Compute the normalized likelihoods as the scores
-      score = np.exp(likelihoods) / np.sum(np.exp(likelihoods))
-      y_score.append(score)
 
   # Accuracy
   accuracy = accuracy_score(y_test, y_pred)
