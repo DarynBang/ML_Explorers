@@ -3,7 +3,6 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score,
@@ -11,7 +10,6 @@ from src.utils import get_data_from_file
 import pandas as pd
 import pickle
 from hmmlearn import hmm
-import operator
 
 
 def hidden_markov_model_algorithm(embedding_name= 'flatten'):
