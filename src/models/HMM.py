@@ -6,76 +6,6 @@ import pandas as pd
 import pickle
 from hmmlearn import hmm
 import operator
-from copy import copy
-from scipy.special import softmax
-
-
-class HMM_classifier():
-    def __init__(self, base_hmm_model):
-        self.models = {}
-        self.hmm_model = base_hmm_model
-
-    def fit(self, X, Y):
-        """
-        X: input sequence [[[x1,x2,.., xn]...]]
-        Y: output classes [1, 2, 1, ...]
-        """
-
-        X_Y = {}
-        X_lens = {}
-        for c in set(Y):
-            X_Y[c] = []
-            X_lens[c] = []
-
-        for x, y in zip(X, Y):
-            X_Y[y].extend(x)
-            X_lens[y].append(len(x))
-
-        for c in set(Y):
-            print("Fit HMM for", c, " class")
-            hmm_model = copy(self.hmm_model)
-            hmm_model.fit(X_Y[c], X_lens[c])
-            self.models[c] = hmm_model
-
-    def _predict_scores(self, X):
-
-        """
-        X: input sample [[x1,x2,.., xn]]
-        Y: dict with log likehood per class
-        """
-        X_seq = []
-        X_lens = []
-        for x in X:
-            X_seq.extend(x)
-            X_lens.append(len(x))
-
-        scores = {}
-        for k, v in self.models.items():
-            scores[k] = v.score(X)
-
-        return scores
-
-    def predict_proba(self, X):
-        """
-        X: input sample [[x1,x2,.., xn]]
-        Y: dict with probabilities per class
-        """
-        pred = self._predict_scores(X)
-
-        keys = list(pred.keys())
-        scores = softmax(list(pred.values()))
-
-        return dict(zip(keys, scores))
-
-    def predict(self, X):
-        """
-        X: input sample [[x1,x2,.., xn]]
-        Y: predicted class label
-        """
-        pred = self.predict_proba(X)
-
-        return max(pred.items(), key=operator.itemgetter(1))[0]
-
 
 
 def hidden_markov_model_algorithm(embedding_name= 'flatten'):
@@ -85,12 +15,28 @@ def hidden_markov_model_algorithm(embedding_name= 'flatten'):
   X = np.concatenate((train_data, val_data, test_data), axis=0)
   y = np.concatenate((train_labels, val_labels, test_labels), axis=0)
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-  clf = HMM_classifier(hmm.CategoricalHMM())
-  clf.fit(X_train, y_train)
+    
+  hmms = []
+  for c in range(num_states):
+      # Get the training images for the class
+      class_images = X_train[y_train == c]
+      # Create a Gaussian HMM with num_states states and diagonal covariance matrix
+      model = hmm.GaussianHMM(n_components=num_states, n_iter=1000)
+      # Fit the model to the training images
+      model.fit(class_images)
+      hmms.append(model)
 
-  print('Got here')
-  # Predict on test data
-  y_pred = clf.predict(X_test)
+  # Classify the test images using the trained HMMs
+  y_pred = []
+  y_score = []
+  for symbols in X_test:
+      # Compute the likelihood of the symbols for each HMM
+      likelihoods = [hmm.score(symbols) for hmm in hmms]
+      # Select the class with the highest likelihood
+      y_pred.append(np.argmax(likelihoods))
+      # Compute the normalized likelihoods as the scores
+      score = np.exp(likelihoods) / np.sum(np.exp(likelihoods))
+      y_score.append(score)
 
   # Accuracy
   accuracy = accuracy_score(y_test, y_pred)
