@@ -314,33 +314,88 @@ Hidden Markov Models (HMMs), while fundamentally designed for sequential data, c
   </tr>
   <tr>
     <td>2D_CNN_init</td>
-    <td>0.8194</td>
-    <td>0.8284</td>
-    <td>0.8194</td>
-    <td>0.8146</td>
+    <td>0.6701</td>
+    <td>0.7935</td>
+    <td>0.6701</td>
+    <td>0.6535</td>
   </tr>
   <tr>
     <td>2D_CNN_pretrained</td>
-    <td>0.7186</td>
-    <td>0.7311</td>
-    <td>0.7186</td>
-    <td>0.6826</td>
+    <td>0.4968</td>
+    <td>0.6635</td>
+    <td>0.4968/td>
+    <td>0.4617</td>
   </tr>
   <tr>
     <td>3D_CNN_init</td>
-    <td>0.8507</td>
-    <td>0.8573</td>
-    <td>0.8507</td>
-    <td>0.8492</td>
+    <td>0.6520</td>
+    <td>0.7020</td>
+    <td>0.6520</td>
+    <td>0.6446</td>
   </tr>
   <tr>
     <td>3D_CNN_pretrained</td>
-    <td>0.9692</td>
-    <td>0.9723</td>
-    <td>0.9692</td>
-    <td>0.9692</td>
+    <td>0.6696</td>
+    <td>0.8521</td>
+    <td>0.6696</td>
+    <td>0.6737</td>
   </tr>
 </table>
+
+As expected, the results obtained from the Hidden Markov Machine are unsatisfactory. The model trained on 3D_pretrained embeddings had the best performance out of all the embeddings, though it still falls short compared to machine learning algorithms like Decision Trees or Naive Bayes. Models trained on other embeddings performed rather averagely, with the 2D_CNN_pretrained variant having done extremely poorly with the majority of the metrics being less than 0.5. As I mentioned, these results are more or less expected as HMMs are fundamentally designed for sequential data, and 3D medical images from MedMNIST are inherently volumetric, not sequential, so this results in a conflicting nature between the purpose of the model and the data.
+
+<table>
+  <tr>
+    <th>Embedding</th>
+    <th>Accuracy</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>F1 Score</th>
+  </tr>
+  <tr>
+    <td>Flatten</td>
+    <td>0.8267</td>
+    <td>0.9060</td>
+    <td>0.8267</td>
+    <td>0.8421</td>
+  </tr>
+  <tr>
+    <td>2D_CNN_init</td>
+    <td>0.9804</td>
+    <td>0.9805</td>
+    <td>0.9804</td>
+    <td>0.9804</td>
+  </tr>
+  <tr>
+    <td>2D_CNN_pretrained</td>
+    <td>0.8771</td>
+    <td>0.8775</td>
+    <td>0.8771/td>
+    <td>0.8758</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_init</td>
+    <td>0.9736</td>
+    <td>0.9736</td>
+    <td>0.9736</td>
+    <td>0.9735</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_pretrained</td>
+    <td>0.9951</td>
+    <td>0.9951</td>
+    <td>0.9951</td>
+    <td>0.9951</td>
+  </tr>
+</table>
+
+As expected, the results from the Support Vector Machine on the embeddings were exceptional. 
+
+
+### Support Vector Machine (Classifier)\
+In the realm of machine learning, Support Vector Machines (SVMs) stand out as robust and versatile algorithms, particularly effective for classification tasks. Imagine there exist data points belonging to two distinct categories, like "potential clients" and "non-clients." SVMs excel at drawing the optimal boundary, or "hyperplane," that best separates these categories.  Instead of just drawing any line that separates the data, SVMs aim to maximize the "margin" – the distance between the hyperplane and the closest data points from each class. These closest points are called "support vectors". However, in most cases, data isn't easily separable by a straight line, this leads to SVMs employing a clever trick called the "kernel trick", which transforms the data into a higher-dimensional space where a linear hyperplane can effectively separate the classes.
+
+When working with the classification task for 3D medical imaging data, CNNs (both 2D and 3D) are instrumental in extracting meaningful features. These features, often represented as high-dimensional vectors, capture complex spatial and temporal patterns within the image. SVCs are inherently designed to handle high-dimensional data efficiently, thanks to the kernel trick, since the relationships between extracted features and medical conditions are often non-linear. SVCs, through kernels like the Radial Basis Function (RBF), can map these features into a higher-dimensional space where linear separation becomes possible. However, there is typically a lot of overhead cost when dealing with high dimensional data, so we also apply the TSNE dimensional reduction method onto the embeddings to save computational cost. The results are shown as below.
 
 
 ## References
