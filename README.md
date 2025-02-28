@@ -290,10 +290,58 @@ Graphical models, including Bayesian Networks and Hidden Markov Models (HMMs), a
 Bayesian Networks are graphical models that represent the probabilistic relationships among a set of variables. They leverage graph theory and probability theory, particularly Bayes' theorem, to model uncertainty. A Bayesian network's structure is a Directed Acyclic Graph (DAG) and nodes in the graph represent variables, whereas directed edges (arrows) represent dependencies between those variables. Each node has an associated conditional probability distribution (CPD). This distribution quantifies the probability of a node's value given the values of its "parent" nodes (nodes with edges pointing to it), and the values are updated under the principle of the Bayes' Theorem, hence the name of the algorithm.
 For our task, we utilize the Bayesian Networks implementation from pgmpy, which is usually very powerful when applied for certain applications; despite that, it faces significant challenges when applied to MedMNIST 3D data due to the large number of voxels (3D pixels). The number of possible network structures and conditional probability distributions grows exponentially with the number of variables present within the feature space, rendering Bayesian Networks to be  infeasible for doing classification for our task.
 
-Our initial embeddings are originally of very high dimensional space, so we decided to map them to a lower dimensional space using the TSNE dimensional reduction technique. Despite our attempts, the training process remained unsuccessful, and just training and doing inference on the flattened embeddings alone resulted in a timeout error on Google Colab. However, since there were multiple evidence suggesting that Bayesian Networks was unlikely to be effective on our data, judging from the algorithm's inherent natures, we decided to move on to applying other machine learning algorithms instead.
+Our initial embeddings were originally of very high dimensional space, so we decided to map them to a lower dimensional space using the TSNE dimensional reduction technique. Despite our attempts, the training process still remained unsuccessful, and just doingtraining and inference on the flattened embeddings alone resulted in a timeout error on Google Colab. However, since there were multiple evidence suggesting that Bayesian Networks was unlikely to be effective on our data, judging from the algorithm's inherent nature, we decided to move on to focusing on other machine learning algorithms instead.
 
 
 ## Hidden Markov Machine
+Hidden Markov Models (HMMs) are probabilistic sequence models used to analyze and predict sequential data. They're particularly effective when dealing with data where the underlying process is assumed to have hidden, unobserved states. For our task, we take advantage of the GaussianHMM from hmmlearn libary, which is a specific type of HMM that assumes the observed data follows a Gaussian distribution. Typically, how the GaussianHMM would work is that we first have to define the number of hidden states (which is the number of classes) in our task. Then, the GaussianHMM assumes that the observations emitted from each hidden state follow a Gaussian distribution. Therefore, each hidden state is associated with a mean vector and a covariance matrix. 
+Hidden Markov Models (HMMs), while fundamentally designed for sequential data, can be adapted to handling classfication tasks, though they might not yield great results due to the inherent nature. The basic principle is to train an HMM for each class in the classification problem. Then, when a new, unknown sequence appears, we calculate the likelihood of that sequence belonging to each of the trained HMMs. The class corresponding to the HMM with the highest likelihood is then assigned as the predicted class. Below are results of applying the GaussianHMM model on the embeddings.
+
+<table>
+  <tr>
+    <th>Embedding</th>
+    <th>Accuracy</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>F1 Score</th>
+  </tr>
+  <tr>
+    <td>Flatten</td>
+    <td>0.5193</td>
+    <td>0.6020</td>
+    <td>0.5193</td>
+    <td>0.5169</td>
+  </tr>
+  <tr>
+    <td>2D_CNN_init</td>
+    <td>0.8194</td>
+    <td>0.8284</td>
+    <td>0.8194</td>
+    <td>0.8146</td>
+  </tr>
+  <tr>
+    <td>2D_CNN_pretrained</td>
+    <td>0.7186</td>
+    <td>0.7311</td>
+    <td>0.7186</td>
+    <td>0.6826</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_init</td>
+    <td>0.8507</td>
+    <td>0.8573</td>
+    <td>0.8507</td>
+    <td>0.8492</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_pretrained</td>
+    <td>0.9692</td>
+    <td>0.9723</td>
+    <td>0.9692</td>
+    <td>0.9692</td>
+  </tr>
+</table>
+
 
 ## References
 <a id="1">[1]</a> 
