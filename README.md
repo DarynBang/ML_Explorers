@@ -344,6 +344,12 @@ Hidden Markov Models (HMMs), while fundamentally designed for sequential data, c
 
 As expected, the results obtained from the Hidden Markov Machine are unsatisfactory. The model trained on 3D_pretrained embeddings had the best performance out of all the embeddings, though it still falls short compared to machine learning algorithms like Decision Trees or Naive Bayes. Models trained on other embeddings performed rather averagely, with the 2D_CNN_pretrained variant having done extremely poorly with the majority of the metrics being less than 0.5. As I mentioned, these results are more or less expected as HMMs are fundamentally designed for sequential data, and 3D medical images from MedMNIST are inherently volumetric, not sequential, so this results in a conflicting nature between the purpose of the model and the data.
 
+
+### Support Vector Machine (Classifier)
+In the realm of machine learning, Support Vector Machines (SVMs) stand out as robust and versatile algorithms, particularly effective for classification tasks. Imagine there exist data points belonging to two distinct categories, like "potential clients" and "non-clients." SVMs excel at drawing the optimal boundary, or "hyperplane," that best separates these categories.  Instead of just drawing any line that separates the data, SVMs aim to maximize the "margin" – the distance between the hyperplane and the closest data points from each class. These closest points are called "support vectors". However, in most cases, data isn't easily separable by a straight line, this leads to SVMs employing a clever trick called the "kernel trick", which transforms the data into a higher-dimensional space where a linear hyperplane can effectively separate the classes.
+
+When working with the classification task for 3D medical imaging data, CNNs (both 2D and 3D) are instrumental in extracting meaningful features. These features, often represented as high-dimensional vectors, capture complex spatial and temporal patterns within the image. SVCs are inherently designed to handle high-dimensional data efficiently, thanks to the kernel trick, since the relationships between extracted features and medical conditions are often non-linear. SVCs, through kernels like the Radial Basis Function (RBF), can map these features into a higher-dimensional space where linear separation becomes possible. However, there is typically a lot of overhead cost when dealing with high dimensional data, so we also apply the TSNE dimensional reduction method onto the embeddings to save computational cost. The results are shown as below.
+
 <table>
   <tr>
     <th>Embedding</th>
@@ -389,14 +395,7 @@ As expected, the results obtained from the Hidden Markov Machine are unsatisfact
   </tr>
 </table>
 
-As expected, the results from the Support Vector Machine on the embeddings were exceptional. 
-
-
-### Support Vector Machine (Classifier)\
-In the realm of machine learning, Support Vector Machines (SVMs) stand out as robust and versatile algorithms, particularly effective for classification tasks. Imagine there exist data points belonging to two distinct categories, like "potential clients" and "non-clients." SVMs excel at drawing the optimal boundary, or "hyperplane," that best separates these categories.  Instead of just drawing any line that separates the data, SVMs aim to maximize the "margin" – the distance between the hyperplane and the closest data points from each class. These closest points are called "support vectors". However, in most cases, data isn't easily separable by a straight line, this leads to SVMs employing a clever trick called the "kernel trick", which transforms the data into a higher-dimensional space where a linear hyperplane can effectively separate the classes.
-
-When working with the classification task for 3D medical imaging data, CNNs (both 2D and 3D) are instrumental in extracting meaningful features. These features, often represented as high-dimensional vectors, capture complex spatial and temporal patterns within the image. SVCs are inherently designed to handle high-dimensional data efficiently, thanks to the kernel trick, since the relationships between extracted features and medical conditions are often non-linear. SVCs, through kernels like the Radial Basis Function (RBF), can map these features into a higher-dimensional space where linear separation becomes possible. However, there is typically a lot of overhead cost when dealing with high dimensional data, so we also apply the TSNE dimensional reduction method onto the embeddings to save computational cost. The results are shown as below.
-
+The results from the Support Vector Machine on the embeddings were outstanding, with model trained on 3D_CNN_pretrained embeddings reaching over 99.5% accuracy. Even with the worst models still perform relative well. These results are to be expected, as to how effective SVMs are, especially when they are used in conjunction with CNNs for feature extraction. CNNs can effectively capture spatial information from medical scans, producing rich feature representations, which then, SVCs can learn the complex decision boundaries required to classify these features, leading to accurate diagnoses or other medical predictions. This fearsome combination can lead to a significantly robust medical image classification system.
 
 ## References
 <a id="1">[1]</a> 
