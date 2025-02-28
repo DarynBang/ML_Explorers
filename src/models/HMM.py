@@ -30,7 +30,7 @@ def hidden_markov_model_algorithm(embedding_name= 'flatten'):
   y_pred = []
   y_score = []
   for symbols in X_test:
-      likelihoods = [hmm.score(symbols) for hmm in hmms]
+      likelihoods = [hmm.score(symbols.reshape(1, -1)) for hmm in hmms]
       # Select the class with the highest likelihood
       y_pred.append(np.argmax(likelihoods))
 
