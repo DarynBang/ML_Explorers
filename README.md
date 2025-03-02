@@ -224,50 +224,15 @@ Speed: As the depth increases, speed decreases in both training and inference. T
 ### Multi-layer Perceptron (MLP)
 In this experiment, we will use an MLP classifier to classify the features from the embeddings mentioned above. From left to right and top to bottom: flatten, 2D init, 2D pretrained, 3D init, and 3D pretrained, respectively.
 
-Flatten:
-
 <img src="assets/flatten_mlp.png" width="200"> 
-
-Accuracy: 0.2637
-Precision: 0.1393
-Recall: 0.2637
-F1 Score: 0.1598
-
-2D CNN initialize:
 
 <img src="assets/2d_init_mlp.png" width="200">
 
-Accuracy: 0.8476
-Precision: 0.7924
-Recall: 0.8476
-F1 Score: 0.8099
-
-2D CNN pretrained:
-
 <img src="assets/2d_pretrained_mlp.png" width="200">
 
-Accuracy: 0.2699
-Precision: 0.0730
-Recall: 0.2699
-F1 Score: 0.1149
-
-3D CNN initialize:
 <img src="assets/3d_init_mlp.png" width="200">
 
-Accuracy: 0.2184
-Precision: 0.0477
-Recall: 0.2184
-F1 Score: 0.0783
-
-3D CNN pretrained:
-
 <img src="assets/3d_pretrained_mlp.png" width="200">
-
-Accuracy: 0.9007
-Precision: 0.9431
-Recall: 0.9007
-F1 Score: 0.9036
-
 
 <table>
   <tr>
