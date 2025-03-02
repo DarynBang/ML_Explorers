@@ -269,6 +269,51 @@ Recall: 0.9007
 F1 Score: 0.9036
 
 
+<table>
+  <tr>
+    <th>Embedding</th>
+    <th>Accuracy</th>
+    <th>Precision</th>
+    <th>Recall</th>
+    <th>F1 Score</th>
+  </tr>
+  <tr>
+    <td>Flatten</td>
+    <td>0.2637</td>
+    <td>0.1393</td>
+    <td>0.2637</td>
+    <td>0.1598</td>
+  </tr>
+  <tr>
+    <td>2D_CNN_init</td>
+    <td>0.8476</td>
+    <td>0.7924</td>
+    <td>0.8476</td>
+    <td>0.8099</td>
+  </tr>
+  <tr>
+    <td>2D_CNN_pretrained</td>
+    <td>0.2699</td>
+    <td>0.0730</td>
+    <td>0.2699</td>
+    <td>0.1149</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_init</td>
+    <td>0.2184</td>
+    <td>0.0477</td>
+    <td>0.2184</td>
+    <td>0.0783</td>
+  </tr>
+  <tr>
+    <td>3D_CNN_pretrained</td>
+    <td>0.9007</td>
+    <td>0.9431</td>
+    <td>0.9007</td>
+    <td>0.9036</td>
+  </tr>
+</table>
+
 ### Naive Bayes
 
 <table>
