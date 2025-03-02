@@ -224,11 +224,7 @@ Speed: As the depth increases, speed decreases in both training and inference. T
 ### Multi-layer Perceptron (MLP)
 In this experiment, we will use an MLP classifier to classify the features from the embeddings mentioned above. From left to right and top to bottom: flatten, 2D init, 2D pretrained, 3D init, and 3D pretrained, respectively.
 
-<img src="assets/flatten_mlp.png" width="250"> 
-<img src="assets/2d_init_mlp.png" width="250">
-<img src="assets/2d_pretrained_mlp.png" width="250">
-<img src="assets/3d_init_mlp.png" width="250">
-<img src="assets/3d_pretrained_mlp.png" width="250">
+<img src="assets/flatten_mlp.png" width="250"><img src="assets/2d_init_mlp.png" width="250"><img src="assets/2d_pretrained_mlp.png" width="250"><img src="assets/3d_init_mlp.png" width="250"><img src="assets/3d_pretrained_mlp.png" width="250">
 
 <table>
   <tr>
