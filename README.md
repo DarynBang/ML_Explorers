@@ -273,14 +273,9 @@ In this experiment, we will use an MLP classifier to classify the features from 
   </tr>
 </table>
 
-Overall Observations:
-
-+ 3D Pretrained MLP achieves the best test loss and stability, making it the most promising model. 2D Init MLP has reasonable performance but is outperformed by the 3D pretrained version. 2D Pretrained MLP and Flatten MLP suffer from instability, indicating potential issues with initialization or architecture. 3D Init MLP converges fast but does not generalize well.
++ Overall Observations: 3D Pretrained MLP achieves the best test loss and stability, making it the most promising model. 2D Init MLP has reasonable performance but is outperformed by the 3D pretrained version. 2D Pretrained MLP and Flatten MLP suffer from instability, indicating potential issues with initialization or architecture. 3D Init MLP converges fast but does not generalize well.
   
-+ Storage: 
-- Flatten MLP (21,952 x 1024 + 1024 parameters in the first layer) → Largest storage requirement
-- 3D CNN MLP (11,776 x 1024 + 1024 parameters in the first layer) → Moderate storage
-- 2D CNN MLP (1,024 x 1024 + 1024 parameters in the first layer ) → Smallest storage
++ Storage: Flatten MLP (21,952 x 1024 + 1024 parameters in the first layer) → Largest storage requirement, 3D CNN MLP (11,776 x 1024 + 1024 parameters in the first layer) → Moderate storage, 2D CNN MLP (1,024 x 1024 + 1024 parameters in the first layer ) → Smallest storage
 
 + Since all models have the same number of MLP layers, their speed remains identical.
 ### Naive Bayes
