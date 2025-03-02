@@ -68,7 +68,9 @@ The PCA visualizations of the train, validation, and test sets show remarkably s
 <img src="assets/reduce_dimension_2d_init.png" width="1200">
 
 The PCA visualizations of the 2D CNN initialized weight embeddings (before training) for the train, validation, and test sets demonstrate a consistent distribution across all three datasets, suggesting that the initialization preserves a uniform structure before any training occurs. Compared to the flatten embeddings, these 2D CNN embeddings appear to offer an advantage, as they can capture the spatial relationships of 2D dimensions such as width and height, leading to potentially richer representations of the data. Furthermore, the distributions in these PCA plots show improved separation among classes compared to the flatten embeddings; for instance, Class 2 forms a distinct, tight cluster, indicating better class separability. This enhanced structure highlights the benefit of leveraging 2D CNN architectures, which may better preserve meaningful patterns in the data, even in the initial, untrained state.
+
 **Pretrained weight:**
+
 <img src="assets/reduce_dimension_2d_pretrained.png" width="1200">
 The PCA visualizations of the 2D CNN pretrained weight embeddings, which have been trained on the training data and validated on the validation data, exhibit a consistent distribution across the train, validation, and test sets, indicating that the pretrained model maintains a stable structure across all datasets. This consistency is an improvement over the flatten embeddings, as the 2D CNN architecture effectively captures the spatial relationships of 2D dimensions such as width and height, resulting in more robust representations of the data. Additionally, the distributions in these PCA plots show better separation among classes compared to the flatten embeddings, with the train, validation, and test sets displaying similar patterns and shapes, such as the distinct linear arrangement of points across classes. This similarity in patterns across datasets suggests that the pretrained 2D CNN model generalizes well, preserving meaningful class distinctions and spatial information effectively.
 
@@ -271,6 +273,17 @@ In this experiment, we will use an MLP classifier to classify the features from 
   </tr>
 </table>
 
+Overall Observations:
+
++ 3D Pretrained MLP achieves the best test loss and stability, making it the most promising model. 2D Init MLP has reasonable performance but is outperformed by the 3D pretrained version. 2D Pretrained MLP and Flatten MLP suffer from instability, indicating potential issues with initialization or architecture. 3D Init MLP converges fast but does not generalize well.
+  
++ Storage:
++ 
+Flatten MLP (21,952 x 1024 + 1024 parameters in the first layer) → Largest storage requirement
+3D CNN MLP (11,776 x 1024 + 1024 parameters in the first layer) → Moderate storage
+2D CNN MLP (1,024 x 1024 + 1024 parameters in the first layer ) → Smallest storage
+
++ Since all models have the same number of MLP layers, their speed remains identical.
 ### Naive Bayes
 
 <table>
