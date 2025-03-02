@@ -375,7 +375,7 @@ When working with the classification task for 3D medical imaging data, CNNs (bot
     <td>2D_CNN_pretrained</td>
     <td>0.8771</td>
     <td>0.8775</td>
-    <td>0.8771/td>
+    <td>0.8771</td>
     <td>0.8758</td>
   </tr>
   <tr>
