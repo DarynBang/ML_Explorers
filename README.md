@@ -23,6 +23,7 @@
     <li><a href="">Tieu Tri Bang       - 2252079</a></li>
     <li><a href="">Nguyen Van Hieu     - 2153345</a></li>
     <li><a href="">Pham Huy Thien Phuc - 2053346</a></li>
+    <li><a href="">Le Minh Nhat        - 1952375</a></li>
 </ol>
 
 ## Enviroments
@@ -446,6 +447,60 @@ When working with the classification task for 3D medical imaging data, CNNs (bot
 </table>
 
 The results from the Support Vector Machine on the embeddings were outstanding, with model trained on 3D_CNN_pretrained embeddings reaching over 99.5% accuracy. Even with the worst models still perform relative well. These results are to be expected, as to how effective SVMs are, especially when they are used in conjunction with CNNs for feature extraction. CNNs can effectively capture spatial information from medical scans, producing rich feature representations, which then, SVCs can learn the complex decision boundaries required to classify these features, leading to accurate diagnoses or other medical predictions. This fearsome combination can lead to a significantly robust medical image classification system.
+
+### Genetic Algorithm
+**Model Performance Analysis:**
+#### 1. **3D_CNN_pretrained Model**
+<img src="assets/GA_Analysis/3D_CNN_pretrained.png" width="500">
+
+- **Performance:** This model achieves the best results with **Test Accuracy = 0.7716** and **F1-Score = 0.7138**, significantly outperforming the other models.  
+- **Explanation of Performance:**  
+  - **The three loss curves (Training, Validation, Test) are close to each other** across generations, indicating that the model has learned the **general patterns** of the data.  
+  - **Reason:** The 3D CNN has a strong ability to learn **abstract and multi-dimensional features** from the data, which helps balance the distribution of the train, validation, and test sets. This shows that the model not only memorizes the training data but also **understands the underlying structure** of the features, leading to excellent generalization.  
+  - **Key Point:** The three curves (Training, Validation, Test) are close because the distributions of the three sets (train, val, test) have been brought closer together. This is due to the 3D CNN's ability to learn abstract information effectively, allowing it to understand the **generalizability** of the dataset.
+
+#### 2. **3D_CNN_init Model**
+<img src="assets/GA_Analysis/3D_CNN_init.png" width="500" style="margin-right:10px;">
+
+- **Performance:** Test Accuracy = 0.5017, F1-Score = 0.3788.  
+- **Weaknesses:**  
+  - Despite being a 3D model, the lack of pretraining limits its potential, resulting in significantly lower performance compared to the pretrained version.  
+
+#### 3. **2D_CNN_pretrained Model**
+<img src="assets/GA_Analysis/2D_CNN_pretrained.png" width="500" style="margin-right:10px;">
+
+- **Performance:** Test Accuracy = 0.3999, F1-Score = 0.2706.  
+- **Reasons:**  
+  - **Large gap between loss curves** suggests that the model may not be learning effectively, and further training should be implemented.
+
+#### 4. **2D_CNN_init Model**
+<img src="assets/GA_Analysis/2D_CNN_init.png" width="500" style="margin-right:10px;">
+
+- **Performance:** Despite a Test Accuracy of 0.5025 (higher than 2D pretrained), the F1-Score = 0.3505 is still very low.  
+- **Reason:** The extremely low Precision (0.2697) suggests the model predicts many **false positives**, likely due to suboptimal initialization.  
+
+#### 5. **Flatten Model**
+<img src="assets/GA_Analysis/flatten.png" width="500" style="margin-right:10px;">
+
+- **Worst Performance:** Test Accuracy = 0.3758, F1-Score = 0.3060.  
+- **Reasons:**  
+  - The simple architecture (Flatten + MLP) cannot extract meaningful features from complex data.  
+  - The loss curves do not decrease significantly across generations, indicating that the model **fails to learn** the relationships in the data.  
+
+#### **Summary of the performance**
+| Model                | Embedding Dim | Test Accuracy | Precision | Recall | F1-Score |
+|----------------------|---------------|---------------|-----------|--------|----------|
+| flatten             | 21952         | 0.3758        | 0.3830    | 0.3758 | 0.3060   |
+| 2D_CNN_init         | 1024          | 0.5025        | 0.2697    | 0.5025 | 0.3505   |
+| 2D_CNN_pretrained   | 1024          | 0.3999        | 0.2201    | 0.3999 | 0.2706   |
+| 3D_CNN_init         | 11776         | 0.5017        | 0.3180    | 0.5017 | 0.3788   |
+| 3D_CNN_pretrained   | 11776         | 0.7716        | 0.6889    | 0.7716 | 0.7138   |
+
+### **Conclusion:**
+- **3D_CNN_pretrained** is the best-performing model due to its ability to learn abstract features and balance the data distribution.  
+- **Pretraining** plays a crucial role in improving performance, especially for complex architectures like 3D CNN.  
+- The **closeness of the three loss curves** in the 3D Pretrained model demonstrates its ability to generalize well, as the distributions of the train, validation, and test sets are brought closer together. This is a result of the 3D CNN's strong capability to learn abstract information, allowing it to understand the **generalizability** of the dataset.  
+- The 2D and Flatten models require architectural improvements or enhanced data augmentation to compete with the 3D CNN.  
 
 ## References
 <a id="1">[1]</a> 
