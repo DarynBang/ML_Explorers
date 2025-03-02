@@ -12,6 +12,7 @@
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#datasets">Datasets</a></li>
     <li><a href="#embedding-method">Embedding method</a></li>
+    <li><a href="#machine-learning-algorithm">Machine learning algorithm </a></li>
     <li><a href="#references">References</a></li>
   </ol>
 </details>
@@ -159,7 +160,7 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 ### Decision tree
 **Performance:** With each model, the depth coefficients in the range from 5 to 30 with steps of 5 will be substituted for the performance analysis. As the result, the graph showing the correlation between the depth coefficient and performance will be plotted with the accuracy at each step.
 
- ============= flatten ============== 
+Flatten: 
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
 |-----------|----------|-----------|--------|----------|
@@ -169,8 +170,8 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 20        | 0.862947 | 0.865628  | 0.862947 | 0.862577 |
 | 25        | 0.869799 | 0.871304  | 0.869799 | 0.869791 |
 
- ============= 2D_CNN_init ============== 
- 
+2D_CNN_init:
+
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
 |-----------|----------|-----------|--------|----------|
 | 5         | 0.883505 | 0.883267  | 0.883505 | 0.883099 |
@@ -179,7 +180,7 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 20        | 0.895742 | 0.895717  | 0.895742 | 0.895608 |
 | 25        | 0.894763 | 0.894838  | 0.894763 | 0.894700 |
 
- ============= 2D_CNN_pretrained ============== 
+2D_CNN_pretrained:
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
 |-----------|----------|-----------|--------|----------|
@@ -189,7 +190,7 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 20        | 0.879589 | 0.879295  | 0.879589 | 0.878279 |
 | 25        | 0.881547 | 0.880992  | 0.881547 | 0.880747 |
 
- ============= 3D_CNN_init ============== 
+3D_CNN_init:
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
 |-----------|----------|-----------|--------|----------|
@@ -199,7 +200,7 @@ The training and validation loss decrease rapidly in the first few epochs, indic
 | 20        | 0.924131 | 0.924283  | 0.924131 | 0.924021 |
 | 25        | 0.918747 | 0.918625  | 0.918747 | 0.918564 |
 
- ============= 3D_CNN_pretrained ============== 
+ 3D_CNN_pretrained:
  
 | Max Depth | Accuracy | Precision | Recall | F1 Score |
 |-----------|----------|-----------|--------|----------|
@@ -281,7 +282,7 @@ Conditional Independence between features given the class is naturally presumed 
 
 **Result analysis:** Naïve Bayes works best when features are independent, but CNN-extracted features are often correlated. Despite that, 3D CNN-based models performed the best, possibly because the feature dependencies were still manageable for GNB.
 
- ================================================================== 
+
 ### Graphical Models (Bayesian Networks, HMM)
 Graphical models, including Bayesian Networks and Hidden Markov Models (HMMs), are powerful tools when dealing with data that exhibits complex dependencies and uncertainties. However, they are generally infeasible when dealing with high dimensional data, such as for the 3D medical image classification task, even after the data has been flattened or transformed using 2D and 3D CNNs. Consequently, we decided to apply TSNE onto the embeddings to map them into a lower dimensional, so that applying Graphical Models for classification would be more practical. Despite that the models would most likely not perform well due to the conflicting natures of the models as well as the data, we show our findings and observations below:
 
@@ -343,7 +344,7 @@ Hidden Markov Models (HMMs), while fundamentally designed for sequential data, c
 
 As expected, the results obtained from the Hidden Markov Machine are unsatisfactory. The model trained on 3D_pretrained embeddings had the best performance out of all the embeddings, though it still falls short compared to machine learning algorithms like Decision Trees or Naive Bayes. Models trained on other embeddings performed rather averagely, with the 2D_CNN_pretrained variant having done extremely poorly with the majority of the metrics being less than 0.5. As I mentioned, these results are more or less expected as HMMs are fundamentally designed for sequential data, and 3D medical images from MedMNIST are inherently volumetric, not sequential, so this results in a conflicting nature between the purpose of the model and the data.
 
- ================================================================== 
+
 ### Support Vector Machine (Classifier)
 In the realm of machine learning, Support Vector Machines (SVMs) stand out as robust and versatile algorithms, particularly effective for classification tasks. Imagine there exist data points belonging to two distinct categories, like "potential clients" and "non-clients." SVMs excel at drawing the optimal boundary, or "hyperplane," that best separates these categories.  Instead of just drawing any line that separates the data, SVMs aim to maximize the "margin" – the distance between the hyperplane and the closest data points from each class. These closest points are called "support vectors". However, in most cases, data isn't easily separable by a straight line, this leads to SVMs employing a clever trick called the "kernel trick", which transforms the data into a higher-dimensional space where a linear hyperplane can effectively separate the classes.
 
