@@ -220,7 +220,6 @@ Storage: As the depth increases, storage requirements grow significantly. A deep
 
 Speed: As the depth increases, speed decreases in both training and inference. Training takes longer because deeper trees require more splits and calculations. Inference also slows down since each prediction must traverse more levels from the root to a leaf node, increasing the number of comparisons. This added computational cost can make deep trees impractical for large datasets or real-time applications.
 
- ================================================================== 
 ### Naive Bayes
 
 <table>
@@ -323,7 +322,7 @@ Hidden Markov Models (HMMs), while fundamentally designed for sequential data, c
     <td>2D_CNN_pretrained</td>
     <td>0.4968</td>
     <td>0.6635</td>
-    <td>0.4968/td>
+    <td>0.4968</td>
     <td>0.4617</td>
   </tr>
   <tr>
