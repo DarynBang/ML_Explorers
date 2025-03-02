@@ -223,11 +223,11 @@ Speed: As the depth increases, speed decreases in both training and inference. T
 
 ### Multi-layer Perceptron (MLP)
 In this experiment, we will use an MLP classifier to classify the features from the embeddings mentioned above.
-<img src="assets/flatten.png" width="800">
-<img src="assets/2d_init_mlp.png" width="800">
-<img src="assets/2d_pretrained_mlp.png" width="800">
-<img src="assets/3d_init_mlp.png" width="800">
-<img src="assets/3d_pretrained_mlp.png" width="800">
+<img src="assets/flatten_mlp.png" width="300">
+<img src="assets/2d_init_mlp.png" width="300">
+<img src="assets/2d_pretrained_mlp.png" width="300">
+<img src="assets/3d_init_mlp.png" width="300">
+<img src="assets/3d_pretrained_mlp.png" width="300">
 
 ### Naive Bayes
 
