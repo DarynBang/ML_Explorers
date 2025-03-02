@@ -31,6 +31,8 @@ All experiments run successfully on Google Colab with:
 - Python version: 3.11.11
 - PyTorch version: 2.5.1+cu124
 
+All data and checkpoint in the drive: https://drive.google.com/drive/folders/1agMD9c4U9O-NfGh-uTjIHZ-S8w6jK7bK?usp=sharing or you can generate your self using code in: https://colab.research.google.com/drive/1-lVAvfJVFnOZeESRz-Jiv8R7i_lHqgvU?usp=sharing
+
 ## Introduction
 The classification of 3D medical images presents unique challenges and opportunities in the field of medical imaging and machine learning. In this study, we leverage the MedMNIST [[1]](#1) dataset, a standardized benchmark for medical imaging tasks, to develop and evaluate classifiers for 3D image data. We explore three distinct embedding approaches: a flatten-based method, a 2D Convolutional Neural Network (CNN), and a 3D CNN, each designed to capture spatial features at varying levels of complexity. Results demonstrate that the 3D CNN outperforms simpler embeddings in capturing intricate volumetric patterns, though trade-offs in computational cost are notable. This work provides insights into the suitability of these approaches for 3D medical image classification and establishes a foundation for future advancements in automated diagnostic systems.
 ## Datasets
