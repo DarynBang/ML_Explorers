@@ -222,7 +222,12 @@ Storage: As the depth increases, storage requirements grow significantly. A deep
 Speed: As the depth increases, speed decreases in both training and inference. Training takes longer because deeper trees require more splits and calculations. Inference also slows down since each prediction must traverse more levels from the root to a leaf node, increasing the number of comparisons. This added computational cost can make deep trees impractical for large datasets or real-time applications.
 
 ### Multi-layer Perceptron (MLP)
-
+In this experiment, we will use an MLP classifier to classify the features from the embeddings mentioned above.
+<img src="assets/flatten.png" width="800">
+<img src="assets/2d_init_mlp.png" width="800">
+<img src="assets/2d_pretrained_mlp.png" width="800">
+<img src="assets/3d_init_mlp.png" width="800">
+<img src="assets/3d_pretrained_mlp.png" width="800">
 
 ### Naive Bayes
 
