@@ -523,8 +523,62 @@ Fitness Metric: The fitness of each individual is evaluated using a combination 
 - **3D_CNN_pretrained** is the best-performing model due to its ability to learn abstract features and balance the data distribution.  
 - **Pretraining** plays a crucial role in improving performance, especially for complex architectures like 3D CNN.  
 - The **closeness of the three loss curves** in the 3D Pretrained model demonstrates its ability to generalize well, as the distributions of the train, validation, and test sets are brought closer together. This is a result of the 3D CNN's strong capability to learn abstract information, allowing it to understand the **generalizability** of the dataset.  
-- The 2D and Flatten models require architectural improvements or enhanced data augmentation to compete with the 3D CNN.  
+- The 2D and Flatten models require architectural improvements or enhanced data augmentation to compete with the 3D CNN.
 
+### Extreme Gradient Boost (XG Boost)
+**Performance:** With each model, the depth coefficients in the range from 1 to 35 with steps of 1 will be substituted for the performance analysis. As the result, the graph showing the correlation between the depth coefficient and performance will be plotted with the accuracy at each step. In this case of study, the learning rate coefficient () will be use at 0.1, 0.2, 0.3 to obtain the results of each max depths range.
+
+**With eta = 0.1, the result obtain:**
+Flatten: 
+ 
+| Max depth | Accuracy | Precision | Recall  | F1 Score |
+|---------- |----------|-----------|---------|----------|
+| 1         | 0.8933   | 0.9036    | 0.8933  | 0.8927   |
+| 2         | 0.9398   | 0.9443    | 0.9398  | 0.9394   |
+| 3         | 0.9530   | 0.9565    | 0.9530  | 0.9530   |
+| 4         | 0.9785   | 0.9788    | 0.9785  | 0.9785   |
+
+2D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall  | F1 Score |
+|---------- |----------|-----------|---------|----------|
+|1          | 0.9496   | 0.9496    | 0.9496  | 0.9495   |
+|2          | 0.9692   | 0.9691    | 0.9692  | 0.9691   |
+| 3         | 0.9716   | 0.9715    | 0.9716  | 0.9716   |
+| 4         | 0.9745   | 0.9745    | 0.9745  | 0.9745   |
+
+2D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall  | F1 Score |
+|-----------|----------|-----------|---------|----------|
+| 1         | 0.8874   | 0.8885    | 0.8874  | 0.8861   |
+| 2         | 0.9065   | 0.9067    | 0.9065  | 0.9057   |
+| 3         | 0.9168   | 0.9169    | 0.9168  | 0.9161   |
+| 4         | 0.9158   | 0.9161    | 0.9158  | 0.9149   |
+
+3D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall  | F1 Score |
+|-----------|----------|-----------|---------|----------|
+| 1         | 0.9604   | 0.9605    | 0.9604  | 0.9603   |
+| 2         | 0.9745   | 0.9746    | 0.9745  | 0.9745   |
+| 3         | 0.9804   | 0.9805    | 0.9804  | 0.9804   |
+| 4         | 0.9834   | 0.9834    | 0.9834  | 0.9833   |
+
+3D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall  | F1 Score |
+|-----------|----------|-----------|---------|----------|
+| 1         | 0.9946   | 0.9946    | 0.9946  | 0.9946   |
+| 2         | 0.9961   | 0.9961    | 0.9961  | 0.9961   |
+| 3         | 0.9951   | 0.9951    | 0.9951  | 0.9951   |
+| 4         | 0.9951   | 0.9951    | 0.9951  | 0.9951   |
+
+<img src="assets/GA_Analysis/eta 0.1.png" width="500" style="margin-right:10px;">
+**With eta = 0.2, the result obtain:**
+
+
+**With eta = 0.3, the result obtain:**
 ## References
 <a id="1">[1]</a> 
 ```
