@@ -226,6 +226,60 @@ Storage: As the depth increases, storage requirements grow significantly. A deep
 
 Speed: As the depth increases, speed decreases in both training and inference. Training takes longer because deeper trees require more splits and calculations. Inference also slows down since each prediction must traverse more levels from the root to a leaf node, increasing the number of comparisons. This added computational cost can make deep trees impractical for large datasets or real-time applications.
 
+### Random forest
+**Performance:** Random Forest is an ensemble learning algorithm that constructs multiple decision trees and aggregates their results to improve prediction accuracy and control overfitting. With each model, the depth coefficients in the range from 1 to 5 with steps of 1 will be substituted for the performance analysis. As a result, a graph illustrating the correlation between the depth coefficient and model performance will be plotted using accuracy at each step. This analysis aims to assess how the variation in maximum tree depth influences the overall classification accuracy of the Random Forest model in this study.
+
+Flatten: 
+
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.3505   | 0.1238    | 0.3505 | 0.1827   |
+| 2         | 0.7230   | 0.6521    | 0.7230 | 0.6673   |
+| 3         | 0.8199   | 0.8761    | 0.8199 | 0.8136   |
+| 4         | 0.8483   | 0.8923    | 0.8483 | 0.8464   |
+
+2D_CNN_Init:
+
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.3607   | 0.2969    | 0.3607 | 0.2037   |
+| 2         | 0.6740   | 0.6172    | 0.6740 | 0.6084   |
+| 3         | 0.9075   | 0.9094    | 0.9075 | 0.9068   |
+| 4         | 0.9290   | 0.9296    | 0.9290 | 0.9287   |
+
+2D_CNN_Pretrained:
+
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.3696   | 0.1373    | 0.3696 | 0.2001   |
+| 2         | 0.6402   | 0.7035    | 0.6402 | 0.5738   |
+| 3         | 0.7621   | 0.7822    | 0.7621 | 0.7537   |
+| 4         | 0.8287   | 0.8400    | 0.8287 | 0.8264   |
+
+3D_CNN_Init:
+
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5286   | 0.2944    | 0.5286 | 0.3739   |
+| 2         | 0.6339   | 0.6691    | 0.6339 | 0.5500   |
+| 3         | 0.8507   | 0.8636    | 0.8507 | 0.8464   |
+| 4         | 0.9227   | 0.9231    | 0.9227 | 0.9226   |
+
+3D_CNN_Pretrained:
+
+| Max Depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5301   | 0.3283    | 0.5301 | 0.3901   |
+| 2         | 0.9780   | 0.9790    | 0.9780 | 0.9779   |
+| 3         | 0.9902   | 0.9902    | 0.9902 | 0.9902   |
+| 4         | 0.9931   | 0.9932    | 0.9931 | 0.9931   |
+
+<img src="assets/randomforest.png" width="900" style="margin-right:10px;">
+
+**Analysis:** 
+
+Performance:
+
 ### Multi-layer Perceptron (MLP)
 In this experiment, we will use an MLP classifier to classify the features from the embeddings mentioned above. From left to right and top to bottom: flatten, 2D init, 2D pretrained, 3D init, and 3D pretrained, respectively.
 
