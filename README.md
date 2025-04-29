@@ -274,7 +274,7 @@ Flatten:
 | 3         | 0.9902   | 0.9902    | 0.9902 | 0.9902   |
 | 4         | 0.9931   | 0.9932    | 0.9931 | 0.9931   |
 
-<img src="assets/randomforest.png" width="900" style="margin-right:10px;">
+<img src="assets/randomforest.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
@@ -629,7 +629,7 @@ Flatten:
 | 3         | 0.9951   | 0.9951    | 0.9951  | 0.9951   |
 | 4         | 0.9951   | 0.9951    | 0.9951  | 0.9951   |
 
-<img src="assets/eta_01.png" width="900" style="margin-right:10px;">
+<img src="assets/eta_01.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
@@ -682,7 +682,7 @@ Flatten:
 | 3         | 0.9946   | 0.9946    | 0.9946  | 0.9946   |
 | 4         | 0.9961   | 0.9961    | 0.9961  | 0.9961   |
 
-<img src="assets/eta_02.png" width="900" style="margin-right:10px;">
+<img src="assets/eta_02.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
@@ -735,7 +735,7 @@ Flatten:
 | 3         | 0.9951   | 0.9951    | 0.9951  | 0.9951   |
 | 4         | 0.9946   | 0.9946    | 0.9946  | 0.9946   |
 
-<img src="assets/eta_03.png" width="900" style="margin-right:10px;">
+<img src="assets/eta_03.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
@@ -791,7 +791,7 @@ Flatten:
 | 3         | 0.9941   | 0.9942    | 0.9941 | 0.9941   |
 | 4         | 0.9971   | 0.9971    | 0.9971 | 0.9971   |
 
-<img src="assets/ada_15.png" width="900" style="margin-right:10px;">
+<img src="assets/ada_15.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
@@ -844,7 +844,7 @@ Flatten:
 | 3         | 0.9961   | 0.9961    | 0.9961 | 0.9961   |
 | 4         | 0.9971   | 0.9971    | 0.9971 | 0.9971   |
 
-<img src="assets/ada_30.png" width="900" style="margin-right:10px;">
+<img src="assets/ada_30.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
@@ -897,7 +897,7 @@ Flatten:
 | 3         | 0.9976   | 0.9976    | 0.9976 | 0.9976   |
 | 4         | 0.9966   | 0.9966    | 0.9966 | 0.9966   |
 
-<img src="assets/ada_50.png" width="900" style="margin-right:10px;">
+<img src="assets/ada_50.png" width="800" style="margin-right:10px;">
 
 **Analysis:** 
 
