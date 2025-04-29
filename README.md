@@ -529,6 +529,7 @@ Fitness Metric: The fitness of each individual is evaluated using a combination 
 **Performance:** With each model, the depth coefficients in the range from 1 to 35 with steps of 1 will be substituted for the performance analysis. As the result, the graph showing the correlation between the depth coefficient and performance will be plotted with the accuracy at each step. In this case of study, the learning rate coefficient () will be use at 0.1, 0.2, 0.3 to obtain the results of each max depths range.
 
 **With eta = 0.1, the result obtain:**
+
 Flatten: 
  
 | Max depth | Accuracy | Precision | Recall  | F1 Score |
@@ -577,6 +578,7 @@ Flatten:
 <img src="assets/eta_01.png" width="900" style="margin-right:10px;">
 
 **With eta = 0.2, the result obtain:**
+
 Flatten:
 
 | Max depth | Accuracy | Precision | Recall  | F1 Score |
