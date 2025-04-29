@@ -577,6 +577,10 @@ Flatten:
 
 <img src="assets/eta_01.png" width="900" style="margin-right:10px;">
 
+**Analysis:** 
+
+Performance:
+
 **With eta = 0.2, the result obtain:**
 
 Flatten:
@@ -626,6 +630,10 @@ Flatten:
 
 <img src="assets/eta_02.png" width="900" style="margin-right:10px;">
 
+**Analysis:** 
+
+Performance:
+
 **With eta = 0.3, the result obtain:**
 
 Flatten:
@@ -674,6 +682,10 @@ Flatten:
 | 4         | 0.9946   | 0.9946    | 0.9946  | 0.9946   |
 
 <img src="assets/eta_03.png" width="900" style="margin-right:10px;">
+
+**Analysis:** 
+
+Performance:
 
 ## References
 <a id="1">[1]</a> 
