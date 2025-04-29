@@ -687,6 +687,168 @@ Flatten:
 
 Performance:
 
+### Adaptive Boost (Ada Boost)
+**Performance:** In this study, AdaBoost is utilized with weak learners, where decision tree depths (max_depth) range from 1 to 5 with a step of 1. For performance evaluation, the number of estimators (n_estimators) is varied across 15, 30, and 50. The goal is to analyze the influence of both weak learner complexity and the number of boosting iterations on classification performance. A series of graphs will be generated to illustrate the relationship between each max_depth and the corresponding performance metrics—Accuracy, Precision, Recall, and F1 Score—under each n_estimators setting.
+
+**With n_estimator = 50, the result obtain:**
+
+Flatten: 
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5884   | 0.6174    | 0.5884 | 0.5327   |
+| 2         | 0.8473   | 0.8529    | 0.8473 | 0.8469   |
+| 3         | 0.8957   | 0.8979    | 0.8957 | 0.8957   |
+| 4         | 0.9300   | 0.9308    | 0.9300 | 0.9302   |
+
+2D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5751   | 0.5948    | 0.5751 | 0.5046   |
+| 2         | 0.8654   | 0.8732    | 0.8654 | 0.8640   |
+| 3         | 0.9290   | 0.9306    | 0.9290 | 0.9290   |
+| 4         | 0.9574   | 0.9576    | 0.9574 | 0.9574   |
+
+2D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.6711   | 0.6148    | 0.6711 | 0.6283   |
+| 2         | 0.8404   | 0.8429    | 0.8404 | 0.8339   |
+| 3         | 0.8639   | 0.8653    | 0.8639 | 0.8643   |
+| 4         | 0.8634   | 0.8653    | 0.8634 | 0.8631   |
+
+3D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.7391   | 0.7264    | 0.7391 | 0.6992   |
+| 2         | 0.9197   | 0.9204    | 0.9197 | 0.9195   |
+| 3         | 0.9638   | 0.9643    | 0.9638 | 0.9638   |
+| 4         | 0.9706   | 0.9707    | 0.9706 | 0.9706   |
+
+3D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.8160   | 0.7426    | 0.8160 | 0.7646   |
+| 2         | 0.9936   | 0.9936    | 0.9936 | 0.9936   |
+| 3         | 0.9976   | 0.9976    | 0.9976 | 0.9976   |
+| 4         | 0.9966   | 0.9966    | 0.9966 | 0.9966   |
+
+<img src="assets/ada_50.png" width="900" style="margin-right:10px;">
+
+**Analysis:** 
+
+Performance:
+
+**With n_estimator = 30, the result obtain:**
+
+Flatten: 
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.6016   | 0.6541    | 0.6016 | 0.5633   |
+| 2         | 0.8253   | 0.8391    | 0.8253 | 0.8234   |
+| 3         | 0.8786   | 0.8828    | 0.8786 | 0.8788   |
+| 4         | 0.9236   | 0.9245    | 0.9236 | 0.9238   |
+
+2D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5453   | 0.6020    | 0.5453 | 0.4895   |
+| 2         | 0.8375   | 0.8421    | 0.8375 | 0.8365   |
+| 3         | 0.9256   | 0.9273    | 0.9256 | 0.9259   |
+| 4         | 0.9491   | 0.9495    | 0.9491 | 0.9492   |
+
+2D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5634   | 0.4417    | 0.5634 | 0.4739   |
+| 2         | 0.8512   | 0.8528    | 0.8512 | 0.8503   |
+| 3         | 0.8502   | 0.8497    | 0.8502 | 0.8479   |
+| 4         | 0.8708   | 0.8707    | 0.8708 | 0.8697   |
+
+3D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.7225   | 0.6783    | 0.7225 | 0.6785   |
+| 2         | 0.8884   | 0.8968    | 0.8884 | 0.8865   |
+| 3         | 0.9579   | 0.9580    | 0.9579 | 0.9579   |
+| 4         | 0.9604   | 0.9604    | 0.9604 | 0.9603   |
+
+3D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5135   | 0.3850    | 0.5135 | 0.4129   |
+| 2         | 0.9912   | 0.9913    | 0.9912 | 0.9912   |
+| 3         | 0.9961   | 0.9961    | 0.9961 | 0.9961   |
+| 4         | 0.9971   | 0.9971    | 0.9971 | 0.9971   |
+
+<img src="assets/ada_30.png" width="900" style="margin-right:10px;">
+
+**Analysis:** 
+
+Performance:
+
+**With n_estimator = 15, the result obtain:**
+
+Flatten: 
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5184   | 0.5749    | 0.5184 | 0.4548   |
+| 2         | 0.7930   | 0.8036    | 0.7930 | 0.7918   |
+| 3         | 0.8350   | 0.8383    | 0.8350 | 0.8346   |
+| 4         | 0.8791   | 0.8836    | 0.8791 | 0.8790   |
+
+2D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.5497   | 0.5025    | 0.5497 | 0.4751   |
+| 2         | 0.8164   | 0.8305    | 0.8164 | 0.8150   |
+| 3         | 0.9104   | 0.9122    | 0.9104 | 0.9106   |
+| 4         | 0.9295   | 0.9301    | 0.9295 | 0.9297   |
+
+2D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.4072   | 0.4532    | 0.4072 | 0.3106   |
+| 2         | 0.8439   | 0.8448    | 0.8439 | 0.8378   |
+| 3         | 0.8434   | 0.8433    | 0.8434 | 0.8405   |
+| 4         | 0.8311   | 0.8359    | 0.8311 | 0.8310   |
+
+3D_CNN_Init:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.6853   | 0.7775    | 0.6853 | 0.6380   |
+| 2         | 0.8997   | 0.9002    | 0.8997 | 0.8998   |
+| 3         | 0.9305   | 0.9319    | 0.9305 | 0.9304   |
+| 4         | 0.9613   | 0.9613    | 0.9613 | 0.9612   |
+
+3D_CNN_Pretrained:
+
+| Max depth | Accuracy | Precision | Recall | F1 Score |
+|-----------|----------|-----------|--------|----------|
+| 1         | 0.1723   | 0.0489    | 0.1723 | 0.0762   |
+| 2         | 0.9775   | 0.9781    | 0.9775 | 0.9775   |
+| 3         | 0.9941   | 0.9942    | 0.9941 | 0.9941   |
+| 4         | 0.9971   | 0.9971    | 0.9971 | 0.9971   |
+
+<img src="assets/ada_15.png" width="900" style="margin-right:10px;">
+
+**Analysis:** 
+
+Performance:
+
 ## References
 <a id="1">[1]</a> 
 ```
