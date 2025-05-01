@@ -278,7 +278,9 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: The 3D_CNN_pretrained model clearly stands out, delivering near-perfect F1 scores at all tested depths (reaching 0.9931 at depth 4), indicating highly accurate and consistent predictions. This highlights the effectiveness of pretrained 3D features in capturing rich and relevant information for classification tasks. The 3D_CNN_init model also performs very well, gradually improving with depth and achieving a strong F1 score of 0.9226 at depth 4, though slightly below the pretrained counterpart. In contrast, the 2D_CNN_init model shows solid improvement as tree depth increases, ending at 0.9287 F1 score. Interestingly, the 2D_CNN_pretrained model underperforms compared to its non-pretrained version, peaking early and plateauing at a lower F1 score of 0.8264, possibly due to overfitting or poor feature transferability. This suggests that the pretrained 2D features may not be as well-aligned with the task domain as expected. The flatten model starts with the weakest performance, with an F1 score of 0.1827 at depth 1. However, it improves steadily and reaches 0.8464 at depth 4, demonstrating that even basic features can benefit significantly from deeper trees, which effectively extract complex decision boundaries from simpler inputs. Overall, 3D models outperform 2D models, and pretraining is beneficial—especially for 3D CNNs. The performance gains across increasing depths also highlight that Random Forests can effectively exploit the richer feature spaces provided by deep learning embeddings.
+
+Speed: Training and inference speed decrease with increasing depth. Training deep Random Forests requires more computational effort to evaluate splits, and during inference, each sample must traverse more nodes to reach a decision. This latency can be particularly problematic when real-time processing is needed. For instance, using deep trees with high-dimensional 3D CNN features may yield excellent accuracy but at the cost of slower predictions, making them less suitable for real-time tasks unless optimized or pruned.
 
 ### Multi-layer Perceptron (MLP)
 In this experiment, we will use an MLP classifier to classify the features from the embeddings mentioned above. From left to right and top to bottom: flatten, 2D init, 2D pretrained, 3D init, and 3D pretrained, respectively.
@@ -633,7 +635,16 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: The 3D_CNN_pretrained model consistently achieves the highest F1 scores at all depths, staying very close to 0.99, with minimal fluctuation. This confirms that pretrained 3D CNN features are highly discriminative and enable superior classification performance, regardless of tree depth. The 3D_CNN_init model performs slightly lower but still strong, steadily improving from 0.961 to 0.983, showing the benefit of 3D feature representations even without pretraining.
+
+The 2D_CNN_init model follows closely, improving with depth from 0.950 to 0.975, showing robust performance and strong feature extraction despite being less expressive than 3D CNNs. In contrast, the 2D_CNN_pretrained model consistently underperforms, peaking around 0.917, and even showing a slight dip at depth 4. This again suggests that the pretrained 2D features may not be well-aligned with the task-specific domain or could be overfitting early.
+
+The flatten model starts at a modest 0.89 but improves significantly, reaching 0.979 by depth 4. This demonstrates how deeper trees help extract useful patterns even from simple or unstructured embeddings, nearly matching more complex models at higher depths.
+
+Storage: Deeper trees in XGBoost, as with Random Forests, increase the number of nodes and parameters to store, especially for high-dimensional CNN-based features. The 3D_CNN_pretrained model, while the most accurate, likely results in the highest storage demand due to both model complexity and deep tree structures.
+
+Speed: Training time and inference latency increase with depth. Deeper XGBoost trees require more computations during both the learning and prediction phases. This is particularly critical for the 3D CNN models, where feature dimensionality is high, increasing the number of comparisons per split. 
+
 
 **With eta = 0.2, the result obtain:**
 
@@ -686,7 +697,17 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: The 3D_CNN_pretrained model maintains the highest performance across all depths, with F1 scores hovering around 0.995, showing minimal fluctuation. This reaffirms that pretrained 3D CNN features are highly expressive and provide consistently accurate classification, regardless of tree depth.
+
+The 3D_CNN_init model also performs well, starting at 0.977 and slightly increasing to 0.983 by depth 2, then plateauing. This indicates that while the model benefits from deeper trees early on, most of the learning potential is already captured at lower depths due to the strength of 3D features.
+
+The flatten model shows significant improvement with increasing depth, rising from 0.92 to 0.983, matching the 3D_CNN_init model by depth 4. This shows how simple, unstructured features can benefit greatly from deeper decision trees, compensating for the lack of sophisticated feature extraction.
+
+The 2D_CNN_init model improves steadily from 0.963 to 0.978, showing that even without pretraining, 2D CNNs can perform well. However, the 2D_CNN_pretrained model remains the lowest-performing across all depths, peaking at 0.919 and slightly declining afterward, possibly due to mismatched feature transfer or early overfitting.
+
+Storage: As before, deeper trees increase the number of nodes and thus memory requirements. This is particularly critical for models like 3D_CNN_pretrained, which start with high-dimensional features. Models like flatten and 2D_CNN_init may be more memory-efficient in practice due to simpler or lower-dimensional inputs, especially at shallower depths.
+
+Speed: Speed decreases as depth increases due to more calculations during both training and inference. For large datasets or time-sensitive applications, models like 3D_CNN_pretrained may be computationally expensive.
 
 **With eta = 0.3, the result obtain:**
 
@@ -739,7 +760,11 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: In terms of performance, the 3D_CNN_pretrained model consistently achieves the highest F1 scores, maintaining near-perfect accuracy (~0.995) across all tested max depths. Its pretrained features likely provide robust, generalizable representations that excel when paired with XGBoost. The 3D_CNN_init model also performs very well, slightly trailing the pretrained version but still maintaining F1 scores above 0.985 at deeper depths. Interestingly, the flatten model shows a steep upward trend, starting around 0.93 and reaching nearly 0.985 at max depth 4, matching the performance of the more complex 3D_CNN_init model. This suggests that, with sufficient tree depth, even simpler features can perform competitively. Meanwhile, 2D_CNN_init shows steady but modest improvements, peaking at around 0.980. The weakest performer is 2D_CNN_pretrained, which, despite the use of pretrained features, levels off below 0.92, indicating that its feature representations are less effective for this task.
+
+Storage: Storage efficiency varies significantly among these models. The flatten model is by far the most compact, as it doesn’t involve any convolutional layers—just raw features directly fed into XGBoost—making it ideal for storage-constrained environments. The 2D_CNN_init and 2D_CNN_pretrained models require moderate storage; while 2D convolutions increase model size compared to flattening, they are far less storage-intensive than their 3D counterparts. Among the most demanding are the 3D_CNN_init and 3D_CNN_pretrained models, both of which include high-dimensional convolution operations. The pretrained version is especially storage-heavy due to the added burden of storing and loading the pretrained weights, which typically come from large-scale training on external datasets.
+
+Speed: The flatten model is the fastest both during feature extraction and inference, owing to its simplicity—no convolutional layers or deep computations are involved. The 2D_CNN_init model is also relatively fast, benefiting from a lightweight 2D architecture. The 2D_CNN_pretrained model may be slightly slower than its initialized counterpart because it often includes additional layers or requires more preprocessing tied to the pretrained weights. On the other hand, 3D_CNN_init introduces a significant speed cost due to the computational load of 3D convolutions, which process spatial and temporal dimensions simultaneously. The slowest model is 3D_CNN_pretrained, which combines the 3D computational burden with additional time required to load and apply pretrained parameters. 
 
 ### Adaptive Boost (Ada Boost)
 **Performance:** In this study, AdaBoost is utilized with weak learners, where decision tree depths (max_depth) range from 1 to 5 with a step of 1. For performance evaluation, the number of estimators (n_estimators) is varied across 15, 30, and 50. The goal is to analyze the influence of both weak learner complexity and the number of boosting iterations on classification performance. A series of graphs will be generated to illustrate the relationship between each max_depth and the corresponding performance metrics—Accuracy, Precision, Recall, and F1 Score—under each n_estimators setting.
@@ -795,7 +820,11 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: Under AdaBoost, the 3D_CNN_pretrained model again emerges as the top performer, reaching near-perfect F1 scores (~0.995–0.998) from max depth 2 onward. Interestingly, this model shows a dramatic leap in performance between depths 1 and 2, indicating strong non-linear feature utility when boosted trees are allowed greater depth. 3D_CNN_init also performs robustly, increasing steadily with depth and peaking just under 0.95. The 2D_CNN_init model performs better than 2D_CNN_pretrained, climbing up to about 0.92, while the pretrained 2D variant lags slightly and even shows a minor decline at depth 4. The flatten model starts low at around 0.46 and steadily climbs to nearly 0.88 by depth 4, reflecting its dependency on tree depth to extract complex decision boundaries. Overall, 3D features—especially pretrained—are the most powerful when paired with AdaBoost, while pretrained 2D features seem less well-aligned with the boosting framework.
+
+Storage: The flatten model remains the most lightweight due to its use of raw features without convolutional encodings. 2D_CNN_init and 2D_CNN_pretrained sit in the middle, requiring moderate storage to accommodate convolutional filters, though the pretrained model includes extra parameters from external training. The 3D_CNN_init model demands more space due to the complexity of 3D convolutional layers, and the 3D_CNN_pretrained model is the most storage-heavy, carrying both volumetric operations and large pretrained weight files. The tradeoff between model storage and performance is clearly visible—models with higher storage costs tend to yield superior AdaBoost F1 performance.
+
+Speed: The flatten model is the fastest, thanks to its minimal preprocessing and absence of deep learning overhead. The 2D_CNN_init model is relatively fast too, while 2D_CNN_pretrained may suffer from marginally increased latency due to extra loading and preprocessing steps. The 3D_CNN_init model is significantly slower, requiring substantial computation for spatiotemporal feature extraction. The 3D_CNN_pretrained model is the slowest, combining both the computation-heavy 3D architecture and the overhead of loading and applying pretrained weights. 
 
 **With n_estimator = 30, the result obtain:**
 
@@ -848,7 +877,11 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: The 3D_CNN_pretrained model once again dominates in terms of F1 score, achieving nearly perfect classification performance (F1 ≈ 1.0) starting at depth 2 and maintaining that plateau throughout. This sharp rise suggests highly transferable features that pair well with AdaBoost when the model complexity is moderately increased. The 3D_CNN_init model trails closely, improving consistently with depth and stabilizing around 0.95. 2D_CNN_init and 2D_CNN_pretrained both demonstrate solid improvements, with the initialized version slightly outperforming its pretrained counterpart—reaching 0.94 vs. 0.87 respectively. The flatten model shows linear growth across depths, starting at ~0.56 and peaking just above 0.92, reflecting the benefit of allowing greater decision boundaries in AdaBoost when using raw features.
+
+Storage: The flatten model remains the most efficient, requiring minimal memory since it lacks convolutional encoders. The 2D_CNN_init and 2D_CNN_pretrained models are moderate in size, with the pretrained variant slightly heavier due to stored weights. 3D_CNN_init significantly increases storage costs due to complex spatiotemporal convolutional layers, and 3D_CNN_pretrained is the largest, combining the depth of 3D architecture with external learned weights. As in previous analyses, there is a clear trade-off between storage and performance: models with higher memory footprints, especially those using pretrained 3D features, achieve superior F1 scores with boosting.
+
+Speed: The flatten model is the most computationally efficient, offering faster inference and training due to its lack of deep processing layers. The 2D_CNN_init model is also relatively fast, while 2D_CNN_pretrained may introduce minor overhead from loading pretrained weights. The 3D_CNN_init model adds considerable latency due to volumetric data handling and dense convolution operations. 3D_CNN_pretrained, being the most resource-intensive, incurs the highest latency in both loading and forward pass times.
 
 **With n_estimator = 50, the result obtain:**
 
@@ -901,7 +934,11 @@ Flatten:
 
 **Analysis:** 
 
-Performance:
+Performance: 3D_CNN_pretrained continues to outperform all other models, achieving near-perfect F1 scores (approaching 1.0) as early as depth 2 and maintaining this across increasing depths. The 3D_CNN_init model also delivers robust performance, reaching an F1 score above 0.95 by depth 3. The 2D_CNN_init model demonstrates solid gains, starting from 0.51 and peaking at 0.95, closely aligning with flatten, which steadily improves from 0.53 to 0.93. 2D_CNN_pretrained, while showing initial strength (starting around 0.63), plateaus earlier and finishes with the lowest F1 score among CNN-based approaches (~0.87), possibly indicating less synergy between its features and the AdaBoost classifier. Overall, pretrained 3D features offer the best consistency and top-tier performance in this boosting setup.
+
+Storage: The flatten model remains the most storage-efficient, using minimal memory by forgoing deep feature encoders. The 2D_CNN_init and 2D_CNN_pretrained models require moderate storage, with the pretrained version storing additional weights. The 3D_CNN_init model incurs higher memory demands due to its more complex convolutional structure, while 3D_CNN_pretrained is the most memory-intensive due to both architectural depth and loaded weights. This increase in storage correlates with improved performance, especially for pretrained 3D models, emphasizing the storage-performance trade-off inherent in deep learning pipelines.
+
+Speed: The flatten model is the fastest, both in training and inference, due to the absence of convolutional layers. 2D_CNN_init offers decent speed, while 2D_CNN_pretrained might slightly slow down due to weight loading and fine-tuned layer structure. 3D_CNN_init and 3D_CNN_pretrained are the slowest due to the volumetric nature of 3D data and the depth of their convolutional layers, with pretrained models adding loading and initialization overhead.
 
 ## References
 <a id="1">[1]</a> 
