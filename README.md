@@ -519,13 +519,11 @@ The results from the Support Vector Machine on the embeddings were outstanding, 
 
 
 ### Logistic Regression
-
 Logistic regression is a linear model that, despite its name, is used for classification tasks. In binary classification, it models the probability of a binary outcome (0 or 1) using a sigmoid function applied to a linear combination of input features. For multi-class classification, this concept is extended using techniques like One-vs-Rest (OvR) or One-vs-One (OvO), or by employing a multinomial logistic regression (Softmax Regression). In Softmax Regression, the model directly estimates the probabilities of each class. Given an input vector x, the probability of it belonging to class j (out of K classes) is given by:
 
 $$P\big (y=j\big |\mathbf {x}\big )=\frac {e^{\mathbf {w}_j^T\mathbf {x}+b_j}}{\sum _{k=1}^Ke^{\mathbf {w}_k^T\mathbf {x}+b_k}}$$
 
 Results are shown below:
-
 | Model                | Embedding Dim | Test Accuracy | Precision | Recall | F1-Score |
 |----------------------|---------------|---------------|-----------|--------|----------|
 | flatten             | 21952         | 0.8497        | 0.8544    | 0.8497 | 0.8491   |
@@ -534,6 +532,9 @@ Results are shown below:
 | 3D_CNN_init         | 11776         | 0.9687        | 0.9686    | 0.9687 | 0.9686   |
 | 3D_CNN_pretrained   | 11776         | 0.9946        | 0.9946    | 0.9946 | 0.9946   |
 
+The provided results demonstrate the effectiveness of different models, including those based on convolutional neural networks (CNNs), when applied to the 3D MedMNist dataset. Notably, even a simple flattened version of the 3D input, when fed into a linear model like logistic regression (implicitly what's happening after flattening and then classification), achieves a respectable test accuracy of 0.8497. This suggests that even with a high-dimensional but unstructured input (21952 features), logistic regression can capture some meaningful patterns for classification. However, the CNN-based models, especially the 3D CNN with pretrained weights, significantly outperform the flattened input, achieving a test accuracy of 0.9946. This highlights the power of feature learning through convolutional layers, which can extract relevant spatial information from the 3D medical images.
+
+Optimizing the hyperparameters of the logistic regression model from the Scikit-learn library could potentially lead to even better results, although the 3D CNN pretrained model is already performing near-perfectly. For logistic regression, key hyperparameters include the regularization strength, whether it be from the 'C' hyperparameter or other optimization algorithms that could lead to faster convergence. Further experiements should test training the model with TSNE-transformed embeddings, as the used embeddings are of very high dimension and has increased training time. Deespite that, from the results, the high precision, recall, and F1-score values for the 3D CNN pretrained model (all 0.9946) indicate that it performs exceptionally well across all classes in the 3D MedMNist dataset, with very few false positives and false negatives.
 
 ### Genetic Algorithm
 This implementation demonstrates the use of a **Genetic Algorithm (GA)** to optimize the parameters of a Multi-Layer Perceptron (MLP) model, named `Adaptive_MLP`. The GA evolves a population of neural networks over multiple generations, applying principles of selection, crossover, and mutation to improve performance. Below is the description of some key components:
