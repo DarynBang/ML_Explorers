@@ -517,6 +517,24 @@ When working with the classification task for 3D medical imaging data, CNNs (bot
 
 The results from the Support Vector Machine on the embeddings were outstanding, with model trained on 3D_CNN_pretrained embeddings reaching over 99.5% accuracy. Even with the worst models still perform relative well. These results are to be expected, as to how effective SVMs are, especially when they are used in conjunction with CNNs for feature extraction. CNNs can effectively capture spatial information from medical scans, producing rich feature representations, which then, SVCs can learn the complex decision boundaries required to classify these features, leading to accurate diagnoses or other medical predictions. This fearsome combination can lead to a significantly robust medical image classification system.
 
+
+### Logistic Regression
+
+Logistic regression is a linear model that, despite its name, is used for classification tasks. In binary classification, it models the probability of a binary outcome (0 or 1) using a sigmoid function applied to a linear combination of input features. For multi-class classification, this concept is extended using techniques like One-vs-Rest (OvR) or One-vs-One (OvO), or by employing a multinomial logistic regression (Softmax Regression). In Softmax Regression, the model directly estimates the probabilities of each class. Given an input vector x, the probability of it belonging to class j (out of K classes) is given by:
+
+$$P\big (y=j\big |\mathbf {x}\big )=\frac {e^{\mathbf {w}_j^T\mathbf {x}+b_j}}{\sum _{k=1}^Ke^{\mathbf {w}_k^T\mathbf {x}+b_k}}$$
+
+Results are shown below:
+
+| Model                | Embedding Dim | Test Accuracy | Precision | Recall | F1-Score |
+|----------------------|---------------|---------------|-----------|--------|----------|
+| flatten             | 21952         | 0.8497        | 0.8544    | 0.8497 | 0.8491   |
+| 2D_CNN_init         | 1024          | 0.9760        | 0.9761    | 0.9760 | 0.9760   |
+| 2D_CNN_pretrained   | 1024          | 0.7553        | 0.7643    | 0.7553 | 0.7464   |
+| 3D_CNN_init         | 11776         | 0.9687        | 0.9686    | 0.9687 | 0.9686   |
+| 3D_CNN_pretrained   | 11776         | 0.9946        | 0.9946    | 0.9946 | 0.9946   |
+
+
 ### Genetic Algorithm
 This implementation demonstrates the use of a **Genetic Algorithm (GA)** to optimize the parameters of a Multi-Layer Perceptron (MLP) model, named `Adaptive_MLP`. The GA evolves a population of neural networks over multiple generations, applying principles of selection, crossover, and mutation to improve performance. Below is the description of some key components:
 
