@@ -955,6 +955,18 @@ Flatten:
 
 <img src="assets/ada_50.png" width="800" style="margin-right:10px;">
 
+### Feature Selection with GridSearch
+
+Random Forest with Gridsearch using TSNE Embedding
+
+| Model                | Test Accuracy | Precision | Recall | F1-Score |
+|----------------------|---------------|-----------|--------|----------|
+| flatten             |0.9075         | 0.9084    | 0.9075 | 0.9076   |
+| 2D_CNN_init         |0.9750         | 0.9751    | 0.9750 | 0.9750   |
+| 2D_CNN_pretrained   |0.8688         | 0.8718    | 0.8688 | 0.8671   |
+| 3D_CNN_init         |0.9618         | 0.9627    | 0.9618 | 0.9618   |
+| 3D_CNN_pretrained   |0.9956         | 0.9956    | 0.9956 | 0.9956   |
+
 **Analysis:** 
 
 Performance: 3D_CNN_pretrained continues to outperform all other models, achieving near-perfect F1 scores (approaching 1.0) as early as depth 2 and maintaining this across increasing depths. The 3D_CNN_init model also delivers robust performance, reaching an F1 score above 0.95 by depth 3. The 2D_CNN_init model demonstrates solid gains, starting from 0.51 and peaking at 0.95, closely aligning with flatten, which steadily improves from 0.53 to 0.93. 2D_CNN_pretrained, while showing initial strength (starting around 0.63), plateaus earlier and finishes with the lowest F1 score among CNN-based approaches (~0.87), possibly indicating less synergy between its features and the AdaBoost classifier. Overall, pretrained 3D features offer the best consistency and top-tier performance in this boosting setup.
