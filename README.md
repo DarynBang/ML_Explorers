@@ -964,9 +964,11 @@ Storage: The flatten model remains the most storage-efficient, using minimal mem
 Speed: The flatten model is the fastest, both in training and inference, due to the absence of convolutional layers. 2D_CNN_init offers decent speed, while 2D_CNN_pretrained might slightly slow down due to weight loading and fine-tuned layer structure. 3D_CNN_init and 3D_CNN_pretrained are the slowest due to the volumetric nature of 3D data and the depth of their convolutional layers, with pretrained models adding loading and initialization overhead.
 
 
-### Feature Selection with GridSearch
+### Hyperparameter tuning with GridSearch
 
-Random Forest with Gridsearch using TSNE Embedding
+In this section, we discuss the usage of Gridsearch, a hyperparameter tuning technique, applied to the Random Forest algorithm for classifying 3D medical images. 
+The performance of a ML model heavily depends on the hyperparameters of the algorithm used. GridSearchCV is the process of performing hyperparameter tuning in order to determine the optimal values for a given model. While there is no way to know in advance the best values for hyperparameters so ideally, we need to try all possible values to know the optimal values, so we opted to using the reduced dimension TSNE for faster experiments, and despite that, the results were still better than many of experiments above on the original embeddings, with the model trained on the 3D_CNN_pretrained embeddings achieving 99.56% accuracy. Gridsearch in Scikit-learn also allows us to display the optimal parameters GridSearchCV selects for each embedding. Here is the list containing the best-possible parameters for 3D_CNN_pretrained: [max_depth: 10, min_samples_leaf: 1, min_samples_split: 2, n_estimators: 50]. Even though we had allowed the Gridsearch model to use 100 estimators, interestingly, it found that n_estimators = 50 had the best performance, suggesting that setting higher number of estimators would have potentially resulted in overfitting.
+
 
 | Model                | Test Accuracy | Precision | Recall | F1-Score |
 |----------------------|---------------|-----------|--------|----------|
