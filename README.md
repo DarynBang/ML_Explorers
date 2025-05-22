@@ -955,6 +955,15 @@ Flatten:
 
 <img src="assets/ada_50.png" width="800" style="margin-right:10px;">
 
+**Analysis:** 
+
+Performance: 3D_CNN_pretrained continues to outperform all other models, achieving near-perfect F1 scores (approaching 1.0) as early as depth 2 and maintaining this across increasing depths. The 3D_CNN_init model also delivers robust performance, reaching an F1 score above 0.95 by depth 3. The 2D_CNN_init model demonstrates solid gains, starting from 0.51 and peaking at 0.95, closely aligning with flatten, which steadily improves from 0.53 to 0.93. 2D_CNN_pretrained, while showing initial strength (starting around 0.63), plateaus earlier and finishes with the lowest F1 score among CNN-based approaches (~0.87), possibly indicating less synergy between its features and the AdaBoost classifier. Overall, pretrained 3D features offer the best consistency and top-tier performance in this boosting setup.
+
+Storage: The flatten model remains the most storage-efficient, using minimal memory by forgoing deep feature encoders. The 2D_CNN_init and 2D_CNN_pretrained models require moderate storage, with the pretrained version storing additional weights. The 3D_CNN_init model incurs higher memory demands due to its more complex convolutional structure, while 3D_CNN_pretrained is the most memory-intensive due to both architectural depth and loaded weights. This increase in storage correlates with improved performance, especially for pretrained 3D models, emphasizing the storage-performance trade-off inherent in deep learning pipelines.
+
+Speed: The flatten model is the fastest, both in training and inference, due to the absence of convolutional layers. 2D_CNN_init offers decent speed, while 2D_CNN_pretrained might slightly slow down due to weight loading and fine-tuned layer structure. 3D_CNN_init and 3D_CNN_pretrained are the slowest due to the volumetric nature of 3D data and the depth of their convolutional layers, with pretrained models adding loading and initialization overhead.
+
+
 ### Feature Selection with GridSearch
 
 Random Forest with Gridsearch using TSNE Embedding
@@ -966,14 +975,6 @@ Random Forest with Gridsearch using TSNE Embedding
 | 2D_CNN_pretrained   |0.8688         | 0.8718    | 0.8688 | 0.8671   |
 | 3D_CNN_init         |0.9618         | 0.9627    | 0.9618 | 0.9618   |
 | 3D_CNN_pretrained   |0.9956         | 0.9956    | 0.9956 | 0.9956   |
-
-**Analysis:** 
-
-Performance: 3D_CNN_pretrained continues to outperform all other models, achieving near-perfect F1 scores (approaching 1.0) as early as depth 2 and maintaining this across increasing depths. The 3D_CNN_init model also delivers robust performance, reaching an F1 score above 0.95 by depth 3. The 2D_CNN_init model demonstrates solid gains, starting from 0.51 and peaking at 0.95, closely aligning with flatten, which steadily improves from 0.53 to 0.93. 2D_CNN_pretrained, while showing initial strength (starting around 0.63), plateaus earlier and finishes with the lowest F1 score among CNN-based approaches (~0.87), possibly indicating less synergy between its features and the AdaBoost classifier. Overall, pretrained 3D features offer the best consistency and top-tier performance in this boosting setup.
-
-Storage: The flatten model remains the most storage-efficient, using minimal memory by forgoing deep feature encoders. The 2D_CNN_init and 2D_CNN_pretrained models require moderate storage, with the pretrained version storing additional weights. The 3D_CNN_init model incurs higher memory demands due to its more complex convolutional structure, while 3D_CNN_pretrained is the most memory-intensive due to both architectural depth and loaded weights. This increase in storage correlates with improved performance, especially for pretrained 3D models, emphasizing the storage-performance trade-off inherent in deep learning pipelines.
-
-Speed: The flatten model is the fastest, both in training and inference, due to the absence of convolutional layers. 2D_CNN_init offers decent speed, while 2D_CNN_pretrained might slightly slow down due to weight loading and fine-tuned layer structure. 3D_CNN_init and 3D_CNN_pretrained are the slowest due to the volumetric nature of 3D data and the depth of their convolutional layers, with pretrained models adding loading and initialization overhead.
 
 ## References
 <a id="1">[1]</a> 
