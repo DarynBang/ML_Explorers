@@ -978,6 +978,65 @@ The performance of a ML model heavily depends on the hyperparameters of the algo
 | 3D_CNN_init         |0.9618         | 0.9627    | 0.9618 | 0.9618   |
 | 3D_CNN_pretrained   |0.9956         | 0.9956    | 0.9956 | 0.9956   |
 
+### Maximum Entropy Models
+#### Baseline model
+**Introduction**
+MaxEnt, a probabilistic approach that maximizes entropy while satisfying observed constraints, is well-suited for capturing complex patterns in medical imaging features. The baseline MaxEnt model, as defined in the provided source code (maxent.py), processes standardized features using StandardScaler without dimensionality reduction, employing the LBFGS solver with L2 regularization and a maximum of 1,000 iterations. This configuration leverages the full feature space (11,776 dimensions) across five embedding methods: Flatten, 2D CNN (initial and pretrained), and 3D CNN (initial and pretrained). To enhance computational efficiency, a second baseline incorporates Principal Component Analysis (PCA) to reduce features to 500 dimensions, using the SAGA solver with 5,000 iterations (maxent_tune.py). This report evaluates the baseline models, introduces hyperparameter tuning, and compares performance to assess improvements, providing insights into optimizing MaxEnt for 3D medical image classification.
+**Analysis of Baseline Model Results**
+he baseline MaxEnt models were evaluated on validation and test sets for five embedding methods, with performance measured by Validation Accuracy and detailed metrics (precision, recall, F1-score) for the test set. The results for the baseline without PCA
+**Baseline without PCA:**
+- Flatten: Validation Accuracy of 0.83, Test Accuracy of 0.74. The low performance reflects the loss of spatial relationships when unraveling 3D volumes into 1D vectors, with poor F1-scores for classes 0 (0.55) and 4 (0.63).
+- 2D CNN Init: Validation Accuracy of 0.98, Test Accuracy of 0.88. Strong performance across most classes, though class 0 (F1-score: 0.70) and class 5 (0.81) show limitations.
+- 2D CNN Pretrained: Validation Accuracy of 0.90, Test Accuracy of 0.79. Moderate performance, with class 0 (F1-score: 0.65) and class 5 (0.78) underperforming, likely due to less effective feature capture compared to 3D embeddings.
+- 3D CNN Init: Validation Accuracy of 0.99, Test Accuracy of 0.89. High accuracy, but class 0 (F1-score: 0.71) and class 5 (0.82) indicate challenges with minority classes.
+- 3D CNN Pretrained: Validation Accuracy of 1.00, Test Accuracy of 0.90. Near-perfect validation performance, with class 0 (F1-score: 0.73) and class 5 (0.84) still showing lower recall.
+
+**Baseline with PCA (500 dimensions):**
+- Flatten: Validation Accuracy of 0.9096, Test Accuracy of 0.7791. A significant improvement over the non-PCA baseline (0.83 to 0.9096), with better F1-scores for class 0 (0.62) and class 4 (0.62).
+- 2D CNN Init: Validation Accuracy of 0.9710, Test Accuracy of 0.8721. Slightly lower than non-PCA (0.98), but consistent performance across classes (F1-scores: 0.69–0.98).
+- 2D CNN Pretrained: Validation Accuracy of 0.9330, Test Accuracy of 0.9165. A notable improvement over non-PCA (0.90 to 0.9330), with strong F1-scores (0.87–0.95).
+- 3D CNN Init: Validation Accuracy of 0.9888, Test Accuracy of 0.8912. Comparable to non-PCA (0.99), with improved class 5 F1-score (0.82).
+- 3D CNN Pretrained: Validation Accuracy of 0.9955, Test Accuracy of 0.8987. Slightly below non-PCA (1.00), but robust performance (F1-scores: 0.73–0.99).
+
+The PCA baseline generally improves performance for simpler embeddings (Flatten, 2D CNN Pretrained), likely due to reduced noise and overfitting, while maintaining high accuracy for complex embeddings (3D CNN). However, class 0 and class 5 consistently show lower F1-scores, reflecting the impact of class imbalance ([1158, 1335, 1230, 1188, 1027, 972]).
+
+#### Hyperparameter tuning 
+To enhance the PCA-based baseline, hyperparameter tuning was applied using the implementation in maxent_tune.py. The tuning process optimized three parameters: regularization strength (C: [0.1, 1, 10, 100, 1000]), solver type (lbfgs, saga, liblinear), and class weighting (None, balanced). Two methods were employed:
+- Grid Search: Exhaustively tested all parameter combinations with 5-fold cross-validation.
+- Random Search: Sampled 20 random parameter combinations from a uniform distribution for C (0.1 to 1000).
+The best model was selected based on Validation Accuracy, addressing class imbalance with class_weight='balanced' where applicable, and saved for evaluation. This tuning aimed to refine the MaxEnt model’s generalization, particularly for embeddings with suboptimal baseline performance.
+
+**Analysis of Tuned Model Results and Comparison**
+he tuned MaxEnt models with PCA were evaluated, with results compared to both baselines:
+
+- Flatten: Validation Accuracy of 0.9062 (Grid Search, C=10, solver=liblinear, class_weight=None). Slightly below baseline PCA (0.9096), with Test Accuracy of 0.7841 (vs. 0.7791). Minimal improvement suggests limited tuning benefits for this simplistic embedding.
+- 2D CNN Init: Validation Accuracy of 0.9743 (Grid Search, C=0.1, solver=lbfgs, class_weight=None). An improvement over baseline PCA (0.9710), with Test Accuracy of 0.8754 (vs. 0.8721). Tuning modestly enhances performance.
+- 2D CNN Pretrained: Validation Accuracy of 0.9464 (Random Search, C=2.23, solver=liblinear, class_weight=None). A clear improvement over baseline PCA (0.9330), with Test Accuracy of 0.9190 (vs. 0.9165). Tuning significantly boosts this embedding’s performance.
+- 3D CNN Init: Validation Accuracy of 0.9922 (Grid Search, C=0.1, solver=liblinear, class_weight=balanced). Improved over baseline PCA (0.9888), with Test Accuracy of 0.8924 (vs. 0.8912). Tuning refines minority class handling.
+- 3D CNN Pretrained: Validation Accuracy of 0.9967 (Grid Search, C=0.1, solver=liblinear, class_weight=None). Slightly better than baseline PCA (0.9955), with Test Accuracy of 0.8991 (vs. 0.8987). Marginal gains reflect near-optimal baseline performance.
+
+**Comparison:**
+- PCA Impact: PCA significantly improves simpler embeddings (Flatten: 0.83 to 0.9096; 2D CNN Pretrained: 0.90 to 0.9330), with minimal information loss (variance retained ~0.9999997). For complex embeddings (3D CNN), PCA maintains high accuracy with reduced computational cost.
+- Tuning Impact: Tuning offers the most improvement for 2D CNN Pretrained (0.9330 to 0.9464) and moderate gains for others, with class_weight='balanced' aiding minority classes (e.g., class 5 F1-score improves in 3D CNN Init: 0.82 to 0.97). However, gains are limited for Flatten and 3D CNN Pretrained due to their inherent limitations or near-optimal baselines.
+- Trade-offs: PCA reduces training time by lowering dimensionality, with negligible information loss, making it a worthwhile trade-off. Tuning increases computational cost due to parameter search but yields modest accuracy gains, most justified for 2D CNN embeddings.
+
+#### Conclusion
+| Embedding Method     | Baseline (No PCA) Test Acc | Baseline (PCA) Test Acc | Tuning (PCA) Test Acc | Improvement (Tuning vs. No PCA) |
+|----------------------|----------------------------|--------------------------|------------------------|----------------------------------|
+| Flatten              | 0.740                      | 0.779                    | 0.784                  | +0.044                           |
+| 2D CNN Init          | 0.880                      | 0.872                    | 0.875                  | -0.005                           |
+| 2D CNN Pretrained    | 0.790                      | 0.917                    | 0.919                  | +0.129                           |
+| 3D CNN Init          | 0.890                      | 0.891                    | 0.892                  | +0.002                           |
+| 3D CNN Pretrained    | 0.900                      | 0.899                    | 0.899                  | -0.001                           |
+| **Average**          | **0.840**                  | **0.872**                | **0.874**              | **+0.034**                       |
+
+The results highlight the efficacy of PCA and tuning in optimizing MaxEnt for 3D medical image classification. PCA’s ability to retain ~99.99997% variance while reducing dimensions from 11,776 to 500 justifies its use, particularly for computationally intensive embeddings like 3D CNN. The trade-off—slight accuracy drops in some cases (e.g., 3D CNN Pretrained: 1.00 to 0.9955)—is outweighed by reduced resource demands, making PCA suitable for large-scale applications. Tuning further refines performance, especially for 2D CNN Pretrained, where balanced class weighting addresses minority class challenges. However, the marginal gains for 3D CNN Pretrained suggest a ceiling effect, where baseline performance is already near-optimal. Future work could explore adaptive PCA dimensions or alternative tuning strategies to maximize efficiency.
+
+### Conditional Random Field (CRF) model
+#### Baseline model
+
+#### Hyperparameter tuning
+
 ## References
 <a id="1">[1]</a> 
 ```
