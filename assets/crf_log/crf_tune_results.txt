@@ -1,0 +1,189 @@
+=========== flatten ===============
+Train data shape: (6910, 21952), Memory: 144.66 MB
+Train label distribution: [1158 1335 1230 1188 1027  972]
+PCA variance explained: 85.39%
+X_train_reduced shape: (6910, 300), Memory: 15.82 MB
+Epoch 0, Val Accuracy: 0.9353
+Epoch 10, Val Accuracy: 0.9621
+Epoch 20, Val Accuracy: 0.9654
+Epoch 30, Val Accuracy: 0.9676
+Epoch 40, Val Accuracy: 0.9598
+MLP Validation Accuracy: 0.9721
+Grid Search - Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9062
+Grid Search - Params: {'c1': 0.1, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9040
+Grid Search - Params: {'c1': 0.5, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9040
+Grid Search - Params: {'c1': 0.5, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9040
+Random Search - Trial 0, Params: {'c1': 0.01, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9029
+Random Search - Trial 1, Params: {'c1': 0.3, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9051
+Random Search - Trial 2, Params: {'c1': 0.3, 'c2': 0.01, 'max_iterations': 100}, Val Accuracy: 0.9062
+Random Search - Trial 3, Params: {'c1': 0.1, 'c2': 1.0, 'max_iterations': 100}, Val Accuracy: 0.9029
+Random Search - Trial 4, Params: {'c1': 0.3, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9051
+Chọn Grid Search với Validation Accuracy: 0.9062
+Best CRF Test Accuracy: 0.8127
+Best Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}
+
+=== Classification Report on Test Set ===
+              precision    recall  f1-score   support
+
+         0.0     0.9674    0.5076    0.6658       526
+         1.0     0.9871    0.8010    0.8844       382
+         2.0     0.9019    0.9403    0.9207       352
+         3.0     0.9894    0.9430    0.9656       298
+         4.0     1.0000    0.8583    0.9238       240
+         5.0     0.5865    0.9279    0.7187       610
+
+    accuracy                         0.8127      2408
+   macro avg     0.9054    0.8297    0.8465      2408
+weighted avg     0.8704    0.8127    0.8140      2408
+
+============= 2D CNN init =======================
+Train data shape: (6910, 1024), Memory: 26.99 MB
+Train label distribution: [1158 1335 1230 1188 1027  972]
+PCA variance explained: 91.65%
+X_train_reduced shape: (6910, 300), Memory: 7.91 MB
+Epoch 0, Val Accuracy: 0.9821
+Epoch 10, Val Accuracy: 0.9866
+Epoch 20, Val Accuracy: 0.9855
+Epoch 30, Val Accuracy: 0.9855
+Epoch 40, Val Accuracy: 0.9844
+MLP Validation Accuracy: 0.9877
+Grid Search - Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9230
+Grid Search - Params: {'c1': 0.1, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9208
+Grid Search - Params: {'c1': 0.5, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9208
+Grid Search - Params: {'c1': 0.5, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9208
+Random Search - Trial 0, Params: {'c1': 0.1, 'c2': 0.7, 'max_iterations': 100}, Val Accuracy: 0.9208
+Random Search - Trial 1, Params: {'c1': 1.0, 'c2': 0.3, 'max_iterations': 100}, Val Accuracy: 0.9208
+Random Search - Trial 2, Params: {'c1': 1.0, 'c2': 0.01, 'max_iterations': 100}, Val Accuracy: 0.9230
+Random Search - Trial 3, Params: {'c1': 0.3, 'c2': 0.7, 'max_iterations': 100}, Val Accuracy: 0.9208
+Random Search - Trial 4, Params: {'c1': 0.3, 'c2': 0.01, 'max_iterations': 100}, Val Accuracy: 0.9230
+Chọn Grid Search với Validation Accuracy: 0.9230
+Best CRF Test Accuracy: 0.8343
+Best Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}
+
+=== Classification Report on Test Set ===
+              precision    recall  f1-score   support
+
+         0.0     1.0000    0.5266    0.6899       526
+         1.0     0.9969    0.8298    0.9057       382
+         2.0     1.0000    0.9403    0.9693       352
+         3.0     0.9962    0.8691    0.9283       298
+         4.0     0.4977    0.8958    0.6399       240
+         5.0     0.7722    1.0000    0.8714       610
+
+    accuracy                         0.8343      2408
+   macro avg     0.8771    0.8436    0.8341      2408
+weighted avg     0.8912    0.8343    0.8355      2408
+============= 2D CNN pretrained
+Train data shape: (6910, 1024), Memory: 26.99 MB
+Train label distribution: [1158 1335 1230 1188 1027  972]
+PCA variance explained: 100.00%
+X_train_reduced shape: (6910, 300), Memory: 7.91 MB
+Epoch 0, Val Accuracy: 0.8326
+Epoch 10, Val Accuracy: 0.9241
+Epoch 20, Val Accuracy: 0.9431
+Epoch 30, Val Accuracy: 0.9509
+Epoch 40, Val Accuracy: 0.9386
+MLP Validation Accuracy: 0.9542
+Grid Search - Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.7734
+Grid Search - Params: {'c1': 0.1, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.7623
+Grid Search - Params: {'c1': 0.5, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.7612
+Grid Search - Params: {'c1': 0.5, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.7612
+Random Search - Trial 0, Params: {'c1': 0.01, 'c2': 0.7, 'max_iterations': 100}, Val Accuracy: 0.7757
+Random Search - Trial 1, Params: {'c1': 0.7, 'c2': 0.7, 'max_iterations': 100}, Val Accuracy: 0.7612
+Random Search - Trial 2, Params: {'c1': 0.7, 'c2': 1.0, 'max_iterations': 100}, Val Accuracy: 0.7612
+Random Search - Trial 3, Params: {'c1': 0.7, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.7612
+Random Search - Trial 4, Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.7734
+Chọn Random Search với Validation Accuracy: 0.7757
+Best CRF Test Accuracy: 0.7222
+Best Params: {'c1': 0.01, 'c2': 0.7, 'max_iterations': 100}
+
+=== Classification Report on Test Set ===
+              precision    recall  f1-score   support
+
+         0.0     0.9414    0.8555    0.8964       526
+         1.0     0.9817    0.7016    0.8183       382
+         2.0     0.3590    0.9943    0.5275       352
+         3.0     1.0000    0.7752    0.8733       298
+         4.0     1.0000    0.8167    0.8991       240
+         5.0     0.9569    0.4000    0.5642       610
+
+    accuracy                         0.7222      2408
+   macro avg     0.8732    0.7572    0.7631      2408
+weighted avg     0.8797    0.7222    0.7433      2408
+
+
+============= 3D CNN init ==================
+Train data shape: (6910, 11776), Memory: 310.41 MB
+Train label distribution: [1158 1335 1230 1188 1027  972]
+PCA variance explained: 94.73%
+X_train_reduced shape: (6910, 300), Memory: 7.91 MB
+Epoch 0, Val Accuracy: 0.9911
+Epoch 10, Val Accuracy: 0.9933
+Epoch 20, Val Accuracy: 0.9922
+Epoch 30, Val Accuracy: 0.9911
+Epoch 40, Val Accuracy: 0.9922
+MLP Validation Accuracy: 0.9933
+Grid Search - Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9699
+Grid Search - Params: {'c1': 0.1, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9699
+Grid Search - Params: {'c1': 0.5, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9688
+Grid Search - Params: {'c1': 0.5, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9699
+Random Search - Trial 0, Params: {'c1': 1.0, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9699
+Random Search - Trial 1, Params: {'c1': 1.0, 'c2': 0.3, 'max_iterations': 100}, Val Accuracy: 0.9699
+Random Search - Trial 2, Params: {'c1': 0.5, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9699
+Random Search - Trial 3, Params: {'c1': 0.01, 'c2': 0.01, 'max_iterations': 100}, Val Accuracy: 0.9699
+Random Search - Trial 4, Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9699
+Chọn Grid Search với Validation Accuracy: 0.9699
+Best CRF Test Accuracy: 0.8812
+Best Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}
+
+=== Classification Report on Test Set ===
+              precision    recall  f1-score   support
+
+         0.0     0.9900    0.5627    0.7176       526
+         1.0     0.9972    0.9267    0.9607       382
+         2.0     1.0000    1.0000    1.0000       352
+         3.0     0.9965    0.9631    0.9795       298
+         4.0     1.0000    0.9417    0.9700       240
+         5.0     0.6836    0.9951    0.8104       610
+
+    accuracy                         0.8812      2408
+   macro avg     0.9445    0.8982    0.9064      2408
+weighted avg     0.9168    0.8812    0.8785      2408
+
+============= 3D CNN pretrained ===================
+Train data shape: (6910, 11776), Memory: 310.41 MB
+Train label distribution: [1158 1335 1230 1188 1027  972]
+PCA variance explained: 99.99%
+X_train_reduced shape: (6910, 300), Memory: 7.91 MB
+Epoch 0, Val Accuracy: 0.9978
+Epoch 10, Val Accuracy: 0.9978
+Epoch 20, Val Accuracy: 0.9967
+Epoch 30, Val Accuracy: 0.9967
+Epoch 40, Val Accuracy: 0.9967
+MLP Validation Accuracy: 0.9978
+Grid Search - Params: {'c1': 0.1, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9766
+Grid Search - Params: {'c1': 0.1, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9777
+Grid Search - Params: {'c1': 0.5, 'c2': 0.1, 'max_iterations': 100}, Val Accuracy: 0.9766
+Grid Search - Params: {'c1': 0.5, 'c2': 0.5, 'max_iterations': 100}, Val Accuracy: 0.9766
+Random Search - Trial 0, Params: {'c1': 0.7, 'c2': 1.0, 'max_iterations': 100}, Val Accuracy: 0.9766
+Random Search - Trial 1, Params: {'c1': 0.3, 'c2': 0.7, 'max_iterations': 100}, Val Accuracy: 0.9777
+Random Search - Trial 2, Params: {'c1': 0.5, 'c2': 1.0, 'max_iterations': 100}, Val Accuracy: 0.9777
+Random Search - Trial 3, Params: {'c1': 0.3, 'c2': 1.0, 'max_iterations': 100}, Val Accuracy: 0.9777
+Random Search - Trial 4, Params: {'c1': 0.1, 'c2': 0.3, 'max_iterations': 100}, Val Accuracy: 0.9777
+Chọn Grid Search với Validation Accuracy: 0.9777
+Best CRF Test Accuracy: 0.8642
+Best Params: {'c1': 0.1, 'c2': 0.5, 'max_iterations': 100}
+
+=== Classification Report on Test Set ===
+              precision    recall  f1-score   support
+
+         0.0     1.0000    0.5760    0.7310       526
+         1.0     1.0000    0.9503    0.9745       382
+         2.0     1.0000    0.9659    0.9827       352
+         3.0     1.0000    0.9664    0.9829       298
+         4.0     0.6857    1.0000    0.8136       240
+         5.0     0.7160    0.8967    0.7962       610
+
+    accuracy                         0.8642      2408
+   macro avg     0.9003    0.8926    0.8801      2408
+weighted avg     0.8967    0.8642    0.8623      2408

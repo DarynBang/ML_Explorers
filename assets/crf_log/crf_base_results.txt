@@ -1,0 +1,176 @@
+=== crf_flatten_baseline_results ===
+MLP Validation Accuracy: 0.9732
+CRF Train Accuracy: 1.0000
+CRF Validation Accuracy: 0.9163
+CRF Test Accuracy: 0.7865
+
+CRF Validation Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.97      0.88      0.92       165
+         1.0       0.76      0.99      0.86       192
+         2.0       0.97      0.91      0.94       177
+         3.0       1.00      0.96      0.98        98
+         4.0       0.99      0.87      0.93       103
+         5.0       0.98      0.87      0.92       161
+
+    accuracy                           0.92       896
+   macro avg       0.94      0.91      0.92       896
+weighted avg       0.93      0.92      0.92       896
+
+CRF Test Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.90      0.52      0.66       526
+         1.0       0.62      0.99      0.76       382
+         2.0       0.93      0.91      0.92       352
+         3.0       0.99      0.92      0.95       298
+         4.0       0.99      0.84      0.91       240
+         5.0       0.67      0.73      0.70       610
+
+    accuracy                           0.79      2408
+   macro avg       0.85      0.82      0.82      2408
+weighted avg       0.82      0.79      0.78      2408
+
+
+=== crf_2D_CNN_init_baseline_results ===
+MLP Validation Accuracy: 0.9911
+CRF Train Accuracy: 1.0000
+CRF Validation Accuracy: 0.9353
+CRF Test Accuracy: 0.8468
+
+CRF Validation Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      0.91      0.95       165
+         1.0       1.00      0.89      0.94       192
+         2.0       1.00      0.95      0.97       177
+         3.0       0.99      0.92      0.95        98
+         4.0       0.99      0.95      0.97       103
+         5.0       0.74      1.00      0.85       161
+
+    accuracy                           0.94       896
+   macro avg       0.95      0.94      0.94       896
+weighted avg       0.95      0.94      0.94       896
+
+CRF Test Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.98      0.53      0.69       526
+         1.0       0.99      0.87      0.93       382
+         2.0       1.00      0.97      0.98       352
+         3.0       0.99      0.89      0.94       298
+         4.0       0.50      0.90      0.64       240
+         5.0       0.81      0.99      0.89       610
+
+    accuracy                           0.85      2408
+   macro avg       0.88      0.86      0.85      2408
+weighted avg       0.89      0.85      0.85      2408
+
+
+=== crf_2D_CNN_pretrained_baseline_results ===
+MLP Validation Accuracy: 0.9531
+CRF Train Accuracy: 1.0000
+CRF Validation Accuracy: 0.7578
+CRF Test Accuracy: 0.7047
+
+CRF Validation Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.98      0.68      0.81       165
+         1.0       1.00      0.76      0.86       192
+         2.0       0.46      1.00      0.63       177
+         3.0       0.99      0.71      0.83        98
+         4.0       0.99      0.84      0.91       103
+         5.0       0.95      0.53      0.68       161
+
+    accuracy                           0.76       896
+   macro avg       0.89      0.76      0.79       896
+weighted avg       0.88      0.76      0.78       896
+
+CRF Test Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.95      0.87      0.91       526
+         1.0       0.98      0.70      0.82       382
+         2.0       0.34      1.00      0.51       352
+         3.0       1.00      0.66      0.79       298
+         4.0       1.00      0.85      0.92       240
+         5.0       0.97      0.36      0.53       610
+
+    accuracy                           0.70      2408
+   macro avg       0.88      0.74      0.75      2408
+weighted avg       0.88      0.70      0.73      2408
+
+
+=== crf_3D_CNN_init_baseline_results ===
+MLP Validation Accuracy: 0.9944
+CRF Train Accuracy: 1.0000
+CRF Validation Accuracy: 0.9542
+CRF Test Accuracy: 0.8771
+
+
+CRF Validation Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      0.96      0.98       165
+         1.0       1.00      0.95      0.97       192
+         2.0       1.00      0.94      0.97       177
+         3.0       1.00      0.97      0.98        98
+         4.0       1.00      0.88      0.94       103
+         5.0       0.80      1.00      0.89       161
+
+    accuracy                           0.95       896
+   macro avg       0.97      0.95      0.96       896
+weighted avg       0.96      0.95      0.96       896
+
+CRF Test Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       0.98      0.56      0.71       526
+         1.0       0.99      0.95      0.97       382
+         2.0       1.00      0.97      0.99       352
+         3.0       1.00      0.95      0.97       298
+         4.0       1.00      0.94      0.97       240
+         5.0       0.68      0.99      0.80       610
+
+    accuracy                           0.88      2408
+   macro avg       0.94      0.89      0.90      2408
+weighted avg       0.91      0.88      0.87      2408
+
+
+=== crf_3D_CNN_pretrained_baseline_results ===
+MLP Validation Accuracy: 0.9978
+CRF Train Accuracy: 1.0000
+CRF Validation Accuracy: 0.9699
+CRF Test Accuracy: 0.8650
+
+CRF Validation Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      0.98      0.99       165
+         1.0       0.88      0.99      0.94       192
+         2.0       1.00      0.97      0.98       177
+         3.0       1.00      0.99      0.99        98
+         4.0       1.00      0.91      0.95       103
+         5.0       0.99      0.96      0.97       161
+
+    accuracy                           0.97       896
+   macro avg       0.98      0.97      0.97       896
+weighted avg       0.97      0.97      0.97       896
+
+CRF Test Classification Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      0.58      0.73       526
+         1.0       0.78      1.00      0.88       382
+         2.0       1.00      0.97      0.98       352
+         3.0       1.00      0.97      0.99       298
+         4.0       1.00      0.92      0.96       240
+         5.0       0.72      0.90      0.80       610
+
+    accuracy                           0.87      2408
+   macro avg       0.92      0.89      0.89      2408
+weighted avg       0.89      0.87      0.86      2408
+
+

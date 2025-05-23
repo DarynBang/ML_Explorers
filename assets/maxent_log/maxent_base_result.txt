@@ -1,0 +1,150 @@
+=== report_maxent_2D_CNN_init.txt ===
+Validation Report:
+              precision    recall  f1-score   support
+
+         0.0       0.99      0.97      0.98       165
+         1.0       0.99      0.98      0.98       192
+         2.0       0.99      1.00      0.99       177
+         3.0       0.98      0.99      0.98        98
+         4.0       0.99      0.99      0.99       103
+         5.0       0.96      0.98      0.97       161
+
+    accuracy                           0.98       896
+   macro avg       0.98      0.99      0.98       896
+weighted avg       0.98      0.98      0.98       896
+
+Test Report:
+              precision    recall  f1-score   support
+
+         0.0       0.89      0.58      0.70       526
+         1.0       0.98      0.97      0.97       382
+         2.0       0.98      1.00      0.99       352
+         3.0       0.96      0.99      0.97       298
+         4.0       0.99      0.99      0.99       240
+         5.0       0.72      0.92      0.81       610
+
+    accuracy                           0.88      2408
+   macro avg       0.92      0.91      0.91      2408
+weighted avg       0.89      0.88      0.88      2408
+
+
+=== report_maxent_2D_CNN_pretrained.txt ===
+Validation Report:
+              precision    recall  f1-score   support
+
+         0.0       0.99      0.90      0.94       165
+         1.0       0.99      0.92      0.95       192
+         2.0       0.80      0.92      0.86       177
+         3.0       0.90      1.00      0.95        98
+         4.0       0.95      0.98      0.97       103
+         5.0       0.82      0.75      0.78       161
+
+    accuracy                           0.90       896
+   macro avg       0.91      0.91      0.91       896
+weighted avg       0.91      0.90      0.90       896
+
+Test Report:
+              precision    recall  f1-score   support
+
+         0.0       0.80      0.55      0.65       526
+         1.0       0.97      0.93      0.95       382
+         2.0       0.72      0.95      0.82       352
+         3.0       0.93      0.96      0.94       298
+         4.0       0.51      1.00      0.68       240
+         5.0       0.93      0.67      0.78       610
+
+    accuracy                           0.79      2408
+   macro avg       0.81      0.84      0.80      2408
+weighted avg       0.83      0.79      0.79      2408
+
+
+=== report_maxent_3D_CNN_init.txt ===
+Validation Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      0.98      0.99       165
+         1.0       1.00      0.99      0.99       192
+         2.0       1.00      1.00      1.00       177
+         3.0       0.99      1.00      0.99        98
+         4.0       1.00      1.00      1.00       103
+         5.0       0.98      1.00      0.99       161
+
+    accuracy                           0.99       896
+   macro avg       0.99      1.00      0.99       896
+weighted avg       0.99      0.99      0.99       896
+
+Test Report:
+              precision    recall  f1-score   support
+
+         0.0       0.93      0.58      0.71       526
+         1.0       0.99      0.99      0.99       382
+         2.0       0.98      1.00      0.99       352
+         3.0       0.99      0.99      0.99       298
+         4.0       1.00      1.00      1.00       240
+         5.0       0.72      0.95      0.82       610
+
+    accuracy                           0.89      2408
+   macro avg       0.94      0.92      0.92      2408
+weighted avg       0.91      0.89      0.89      2408
+
+
+=== report_maxent_3D_CNN_pretrained.txt ===
+Validation Report:
+              precision    recall  f1-score   support
+
+         0.0       1.00      0.99      1.00       165
+         1.0       1.00      0.99      1.00       192
+         2.0       1.00      1.00      1.00       177
+         3.0       1.00      1.00      1.00        98
+         4.0       1.00      1.00      1.00       103
+         5.0       0.99      1.00      0.99       161
+
+    accuracy                           1.00       896
+   macro avg       1.00      1.00      1.00       896
+weighted avg       1.00      1.00      1.00       896
+
+Test Report:
+              precision    recall  f1-score   support
+
+         0.0       0.97      0.59      0.73       526
+         1.0       0.99      0.99      0.99       382
+         2.0       0.99      1.00      0.99       352
+         3.0       0.99      0.99      0.99       298
+         4.0       1.00      1.00      1.00       240
+         5.0       0.73      0.98      0.84       610
+
+    accuracy                           0.90      2408
+   macro avg       0.95      0.92      0.92      2408
+weighted avg       0.92      0.90      0.90      2408
+
+
+=== report_maxent_flatten.txt ===
+Validation Report:
+              precision    recall  f1-score   support
+
+         0.0       0.72      0.84      0.77       165
+         1.0       0.93      0.90      0.91       192
+         2.0       0.90      0.55      0.69       177
+         3.0       0.89      0.98      0.93        98
+         4.0       0.92      0.95      0.94       103
+         5.0       0.72      0.86      0.79       161
+
+    accuracy                           0.83       896
+   macro avg       0.85      0.85      0.84       896
+weighted avg       0.84      0.83      0.82       896
+
+Test Report:
+              precision    recall  f1-score   support
+
+         0.0       0.62      0.50      0.55       526
+         1.0       0.89      0.91      0.90       382
+         2.0       0.78      0.61      0.68       352
+         3.0       0.95      0.97      0.96       298
+         4.0       0.47      0.92      0.63       240
+         5.0       0.83      0.74      0.78       610
+
+    accuracy                           0.74      2408
+   macro avg       0.76      0.77      0.75      2408
+weighted avg       0.76      0.74      0.74      2408
+
+
