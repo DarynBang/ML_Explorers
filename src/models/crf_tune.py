@@ -11,6 +11,7 @@ from collections import Counter
 import scipy.spatial.distance as distance
 from itertools import product
 import os
+import random
 
 # === Cấu hình ===
 prefix = "flatten"
