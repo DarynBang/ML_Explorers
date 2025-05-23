@@ -132,7 +132,7 @@ mlp_model, mlp_val_acc = train_mlp(X_train_reduced, train_labels, X_val_reduced,
 print(f"MLP Validation Accuracy: {mlp_val_acc:.4f}")
 
 # Tạo đặc trưng CRF
-def extract_crf_features(X, unary_model, num_regions=25):
+def extract_crf_features(X, unary_model, num_regions=20):
     X_crf = []
     for sample in X:
         features = []
@@ -188,33 +188,25 @@ def predict_global_labels(X_crf, model_file):
         y_pred_global.append(int(most_common_label))
     return np.array(y_pred_global)
 
-y_train_pred = predict_global_labels(X_train_crf, model_path)
 y_val_pred = predict_global_labels(X_val_crf, model_path)
 y_test_pred = predict_global_labels(X_test_crf, model_path)
 
 # Đánh giá và lưu kết quả
-train_accuracy = accuracy_score(train_labels, y_train_pred)
 val_accuracy = accuracy_score(val_labels, y_val_pred)
 test_accuracy = accuracy_score(test_labels, y_test_pred)
-print(f"CRF Train Accuracy: {train_accuracy:.4f}")
 print(f"CRF Validation Accuracy: {val_accuracy:.4f}")
 print(f"CRF Test Accuracy: {test_accuracy:.4f}")
 
 # Classification report
-train_report = classification_report(train_labels, y_train_pred)
 val_report = classification_report(val_labels, y_val_pred)
 test_report = classification_report(test_labels, y_test_pred)
-print(f"CRF Train Classification Report:\n{train_report}")
 print(f"CRF Validation Classification Report:\n{val_report}")
 print(f"CRF Test Classification Report:\n{test_report}")
 
 with open(f"{result_dir}/crf_{prefix}_baseline_results.txt", "w") as f:
     f.write(f"MLP Validation Accuracy: {mlp_val_acc:.4f}\n")
-    f.write(f"CRF Train Accuracy: {train_accuracy:.4f}\n")
     f.write(f"CRF Validation Accuracy: {val_accuracy:.4f}\n")
     f.write(f"CRF Test Accuracy: {test_accuracy:.4f}\n")
-    f.write("\nCRF Train Classification Report:\n")
-    f.write(train_report)
     f.write("\nCRF Validation Classification Report:\n")
     f.write(val_report)
     f.write("\nCRF Test Classification Report:\n")

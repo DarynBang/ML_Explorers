@@ -1,0 +1,228 @@
+=============== flatten
+Train label distribution: [1158 1335 1230 1188 1027  972]
+Variance of X_train_reduced: 1.0000000000000002
+
+=== Baseline MaxEnt ===
+Train Accuracy: 0.9816
+Val Accuracy: 0.9096
+Test Accuracy: 0.7791
+              precision    recall  f1-score   support
+
+         0.0       0.80      0.50      0.62       526
+         1.0       0.88      0.92      0.90       382
+         2.0       0.76      0.91      0.83       352
+         3.0       0.93      0.97      0.95       298
+         4.0       0.47      0.93      0.62       240
+         5.0       0.91      0.70      0.79       610
+
+    accuracy                           0.78      2408
+   macro avg       0.79      0.82      0.78      2408
+weighted avg       0.82      0.78      0.78      2408
+
+
+[Grid Search] Validation Accuracy: 0.9062
+Best Params: {'C': 10, 'class_weight': None, 'solver': 'liblinear'}
+
+[Random Search] Validation Accuracy: 0.9007
+Best Params: {'C': np.float64(16.307322208792918), 'class_weight': 'balanced', 'solver': 'liblinear'}
+
+🎯 Best Method: Grid Search - Val Acc: 0.9062
+
+=== Best Model Evaluation ===
+Train Accuracy: 0.9699
+Test Accuracy: 0.7841
+              precision    recall  f1-score   support
+
+         0.0       0.80      0.50      0.61       526
+         1.0       0.90      0.92      0.91       382
+         2.0       0.77      0.91      0.83       352
+         3.0       0.92      0.97      0.94       298
+         4.0       0.47      0.94      0.63       240
+         5.0       0.91      0.72      0.81       610
+
+    accuracy                           0.78      2408
+   macro avg       0.80      0.83      0.79      2408
+weighted avg       0.82      0.78      0.78      2408
+================ 2D CNN init ================
+Train label distribution: [1158 1335 1230 1188 1027  972]
+Variance of X_train_reduced: 0.9999997
+
+=== Baseline MaxEnt ===
+Train Accuracy: 1.0000
+Val Accuracy: 0.9710
+Test Accuracy: 0.8721
+              precision    recall  f1-score   support
+
+         0.0       0.87      0.57      0.69       526
+         1.0       0.98      0.96      0.97       382
+         2.0       0.96      1.00      0.98       352
+         3.0       0.96      0.98      0.97       298
+         4.0       0.97      0.97      0.97       240
+         5.0       0.71      0.91      0.80       610
+
+    accuracy                           0.87      2408
+   macro avg       0.91      0.90      0.90      2408
+weighted avg       0.88      0.87      0.87      2408
+
+
+[Grid Search] Validation Accuracy: 0.9743
+Best Params: {'C': 0.1, 'class_weight': None, 'solver': 'lbfgs'}
+
+[Random Search] Validation Accuracy: 0.9676
+Best Params: {'C': np.float64(20.919368555523178), 'class_weight': 'balanced', 'solver': 'lbfgs'}
+
+🎯 Best Method: Grid Search - Val Acc: 0.9743
+
+=== Best Model Evaluation ===
+Train Accuracy: 0.9987
+Test Accuracy: 0.8754
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.57      0.69       526
+         1.0       0.98      0.96      0.97       382
+         2.0       0.97      1.00      0.98       352
+         3.0       0.96      0.98      0.97       298
+         4.0       0.98      0.98      0.98       240
+         5.0       0.72      0.92      0.80       610
+
+    accuracy                           0.88      2408
+   macro avg       0.91      0.90      0.90      2408
+weighted avg       0.89      0.88      0.87      2408
+
+================ 2D CNN pretrained
+Train label distribution: [1158 1335 1230 1188 1027  972]
+Variance of X_train_reduced: 0.99999934
+
+=== Baseline MaxEnt ===
+Train Accuracy: 0.9873
+Val Accuracy: 0.9330
+Test Accuracy: 0.9165
+              precision    recall  f1-score   support
+
+         0.0       0.86      0.95      0.90       526
+         1.0       0.96      0.94      0.95       382
+         2.0       0.89      0.98      0.94       352
+         3.0       0.93      0.96      0.95       298
+         4.0       0.95      0.91      0.93       240
+         5.0       0.94      0.82      0.87       610
+
+    accuracy                           0.92      2408
+   macro avg       0.92      0.93      0.92      2408
+weighted avg       0.92      0.92      0.92      2408
+
+
+[Grid Search] Validation Accuracy: 0.9453
+Best Params: {'C': 0.1, 'class_weight': 'balanced', 'solver': 'liblinear'}
+
+[Random Search] Validation Accuracy: 0.9464
+Best Params: {'C': np.float64(2.227297177966081), 'class_weight': None, 'solver': 'liblinear'}
+
+🎯 Best Method: Random Search - Val Acc: 0.9464
+
+=== Best Model Evaluation ===
+Train Accuracy: 0.9831
+Test Accuracy: 0.9190
+              precision    recall  f1-score   support
+
+         0.0       0.85      0.96      0.90       526
+         1.0       0.96      0.93      0.95       382
+         2.0       0.91      0.99      0.95       352
+         3.0       0.93      0.97      0.95       298
+         4.0       0.95      0.92      0.94       240
+         5.0       0.95      0.81      0.87       610
+
+    accuracy                           0.92      2408
+   macro avg       0.93      0.93      0.93      2408
+weighted avg       0.92      0.92      0.92      2408
+
+================ 3D CNN init
+Train label distribution: [1158 1335 1230 1188 1027  972]
+Variance of X_train_reduced: 0.99999976
+
+=== Baseline MaxEnt ===
+Train Accuracy: 1.0000
+Val Accuracy: 0.9888
+Test Accuracy: 0.8912
+              precision    recall  f1-score   support
+
+         0.0       0.91      0.58      0.71       526
+         1.0       0.99      0.99      0.99       382
+         2.0       0.99      1.00      0.99       352
+         3.0       0.99      1.00      0.99       298
+         4.0       0.99      1.00      0.99       240
+         5.0       0.72      0.94      0.82       610
+
+    accuracy                           0.89      2408
+   macro avg       0.93      0.92      0.92      2408
+weighted avg       0.91      0.89      0.89      2408
+
+
+[Grid Search] Validation Accuracy: 0.9922
+Best Params: {'C': 0.1, 'class_weight': 'balanced', 'solver': 'liblinear'}
+
+[Random Search] Validation Accuracy: 0.9888
+Best Params: {'C': np.float64(3.0793826006558667), 'class_weight': 'balanced', 'solver': 'lbfgs'}
+
+🎯 Best Method: Grid Search - Val Acc: 0.9922
+
+=== Best Model Evaluation ===
+Train Accuracy: 0.9968
+Test Accuracy: 0.8924
+              precision    recall  f1-score   support
+
+         0.0       0.93      0.58      0.72       526
+         1.0       0.99      0.99      0.99       382
+         2.0       0.99      1.00      0.99       352
+         3.0       0.99      0.99      0.99       298
+         4.0       0.52      1.00      0.68       240
+         5.0       0.99      0.95      0.97       610
+
+    accuracy                           0.89      2408
+   macro avg       0.90      0.92      0.89      2408
+weighted avg       0.93      0.89      0.90      2408
+
+================ 3D CNN pretrained
+Train label distribution: [1158 1335 1230 1188 1027  972]
+Variance of X_train_reduced: 0.9999997
+
+=== Baseline MaxEnt ===
+Train Accuracy: 1.0000
+Val Accuracy: 0.9955
+Test Accuracy: 0.8987
+              precision    recall  f1-score   support
+
+         0.0       0.96      0.59      0.73       526
+         1.0       0.99      0.99      0.99       382
+         2.0       0.99      1.00      0.99       352
+         3.0       0.99      0.99      0.99       298
+         4.0       0.99      0.99      0.99       240
+         5.0       0.73      0.97      0.83       610
+
+    accuracy                           0.90      2408
+   macro avg       0.94      0.92      0.92      2408
+weighted avg       0.92      0.90      0.89      2408
+
+
+[Grid Search] Validation Accuracy: 0.9967
+Best Params: {'C': 0.1, 'class_weight': None, 'solver': 'liblinear'}
+
+[Random Search] Validation Accuracy: 0.9933
+Best Params: {'C': np.float64(63.96600941966404), 'class_weight': 'balanced', 'solver': 'lbfgs'}
+
+🎯 Best Method: Grid Search - Val Acc: 0.9967
+
+=== Best Model Evaluation ===
+Train Accuracy: 0.9997
+Test Accuracy: 0.8991
+              precision    recall  f1-score   support
+
+         0.0       0.96      0.59      0.73       526
+         1.0       0.99      0.99      0.99       382
+         2.0       0.99      1.00      1.00       352
+         3.0       0.99      0.99      0.99       298
+         4.0       0.52      0.99      0.68       240
+         5.0       1.00      0.97      0.98       610
+
+    accuracy                           0.90      2408
+   macro avg       0.91      0.92      0.90      2408
+weighted avg       0.94      0.90      0.90      2408

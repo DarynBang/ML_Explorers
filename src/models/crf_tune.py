@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
 import pycrfsuite
 from collections import Counter
 import scipy.spatial.distance as distance
@@ -15,16 +16,14 @@ import random
 
 # === Cấu hình ===
 prefix = "flatten"
-drive_path = "/content/drive/MyDrive/MaxEnt"
-embedding_dir = f"{drive_path}/Embedding"
+embedding_dir = "/Users/nhatleminh/Study/ML/Project2/Embedding"
 model_dir = "crf_models"
-result_dir = "crf_results"
+result_dir = "new_crf_results_tune"
 os.makedirs(model_dir, exist_ok=True)
 os.makedirs(result_dir, exist_ok=True)
 
 # Kiểm tra GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"Using device: {device}")
 
 # Tải dữ liệu
 def load_data(data_file, label_file):
@@ -98,7 +97,7 @@ def train_mlp(X_train, y_train, X_val, y_val, input_dim, hidden_dim=100, output_
     best_val_acc = 0
     best_model_state = None
     
-    for epoch in range(30):
+    for epoch in range(50):
         model.train()
         for X_batch, y_batch in loader:
             optimizer.zero_grad()
@@ -165,6 +164,17 @@ y_train_crf = [[str(int(label))] * 20 for label in train_labels]
 y_val_crf = [[str(int(label))] * 20 for label in val_labels]
 y_test_crf = [[str(int(label))] * 20 for label in test_labels]
 
+def predict_global_labels(X_crf, model_path):
+    tagger = pycrfsuite.Tagger()
+    tagger.open(model_path)
+    predictions = []
+    for x_seq in X_crf:
+        y_seq = tagger.tag(x_seq)
+        # Choose the most common label in the sequence
+        majority_label = max(set(y_seq), key=y_seq.count)
+        predictions.append(int(majority_label))
+    return predictions
+
 # --- Grid Search ---
 param_grid = {
     'c1': [0.1, 0.5],
@@ -211,7 +221,7 @@ param_grid_random = {
     'c2': [0.01, 0.1, 0.3, 0.5, 0.7, 1.0],
     'max_iterations': [100]
 }
-n_random_trials = 10
+n_random_trials = 5
 
 best_val_acc_random = 0
 best_params_random = None
@@ -246,11 +256,16 @@ else:
 y_test_pred = predict_global_labels(X_test_crf, best_model_path)
 test_acc_best = accuracy_score(test_labels, y_test_pred)
 
+# Tính classification report
+report = classification_report(test_labels, y_test_pred, digits=4)
+
 print(f"Best CRF Test Accuracy: {test_acc_best:.4f}")
 print(f"Best Params: {best_params}")
+print("\n=== Classification Report on Test Set ===")
+print(report)
 
 # Lưu kết quả
-with open(f"{result_dir}/crf_flatten_tuning_comparison_results.txt", "w") as f:
+with open(f"{result_dir}/crf_{prefix}_tuning_results.txt", "w") as f:
     f.write(f"Best Grid Search Validation Accuracy: {best_val_acc_grid:.4f}\n")
     f.write(f"Best Grid Search Params: {best_params_grid}\n")
     f.write(f"Best Random Search Validation Accuracy: {best_val_acc_random:.4f}\n")
@@ -258,3 +273,6 @@ with open(f"{result_dir}/crf_flatten_tuning_comparison_results.txt", "w") as f:
     f.write(f"Final Selected Validation Accuracy: {best_val_acc:.4f}\n")
     f.write(f"Final Selected Test Accuracy: {test_acc_best:.4f}\n")
     f.write(f"Final Selected Params: {best_params}\n")
+    f.write("Classification Report:\n")
+    f.write(report)
+    
